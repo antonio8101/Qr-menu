@@ -5,6 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (){
 
-    return "WEB-SHOWMENU";
+    return view('qr-menu-templates.menu');
 
 });

@@ -5,6 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (){
 
-    return view('qr-menu-templates.home');
+    return view('qr-menu-templates.public');
 
 });

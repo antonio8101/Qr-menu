@@ -6,6 +6,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (){
 
-    return "WEB-AUTH";
+    return view('qr-menu-templates.login');
 
 });

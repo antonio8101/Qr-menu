@@ -4,6 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (){
 
-    return "WEB-PRIVATEAREA";
+    return view('qr-menu-templates.privateArea');
 
 });

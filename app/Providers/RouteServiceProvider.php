@@ -34,7 +34,6 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')
-                ->prefix('public')
                 ->group(base_path('routes/qr-menu-routes/web-public.php'));
 
             Route::middleware('web')
@@ -46,7 +45,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/qr-menu-routes/web-showMenu.php'));
 
             Route::middleware('web')
-                 ->prefix('private')
+                 ->prefix('app')
                 ->group(base_path('routes/qr-menu-routes/web-privateArea.php'));
         });
     }

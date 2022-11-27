@@ -34,7 +34,19 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')
-                ->group(base_path('routes/web.php'));
+                ->group(base_path('routes/qr-menu-routes/web-public.php'));
+
+            Route::middleware('web')
+                ->prefix('auth')
+                ->group(base_path('routes/qr-menu-routes/web-auth.php'));
+
+            Route::middleware('web')
+                ->prefix('menu')
+                ->group(base_path('routes/qr-menu-routes/web-showMenu.php'));
+
+            Route::middleware('web')
+                 ->prefix('app')
+                ->group(base_path('routes/qr-menu-routes/web-privateArea.php'));
         });
     }
 

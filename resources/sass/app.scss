@@ -1,5 +1,88 @@
 @import "~bootstrap/scss/bootstrap";
+$primary: $green-500;
+$secondary: $green-800;
+
+:root{
+    box-sizing: border-box;
+}
+
+*,
+::after,
+::before{
+    box-sizing: inherit;
+}
+
+.page-wrapper{
+    max-width: 1080px;
+    margin: 0 auto;
+    background: $primary;
+}
+
+* + *{
+    background: $primary;
+    color: white;
+}
+.header-out{
+    background: #48bb78;
+    color: white;
+}
+.header-in{
+    background: #48bb78;
+    color: white;
+    max-width: 1080px;
+}
+.navbar-nav{
+    background: $primary;
+    color: white;
+}
+
+.navbar{
+    background: $primary;
+}
 
 body{
-    background-color: red;
+    justify-content: center;
+    background-color: white;
+}
+.page-wrapper{
+    max-width: 1080px;
+}
+
+select.lang-select{
+    background-color: $primary;
+    border: inherit;
+}
+
+.features-container{
+    max-width: available;
+}
+
+.feature-item,
+.plans-item{
+    border-radius: 15px;
+}
+
+.feature-text{
+    margin: 1em;
+}
+
+.empty-div{
+    max-width: available;
+}
+
+.services.item{
+    margin: 0 auto;
+    max-width: 1080px;
+}
+
+h4{
+    color: $secondary;
+}
+
+.plan-text li{
+    list-style: none;
+}
+
+.nd{
+    text-decoration: line-through;
 }

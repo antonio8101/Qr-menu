@@ -1,13 +1,13 @@
+# QR-menu
+
 <p align="center"><img src="https://user-images.githubusercontent.com/300245/209347209-a179fd43-8a60-4de5-ad42-41a0ad744bc3.svg" width="400" alt="Laravel Logo"></p>
 
-## About QR-menu
+## About the project
 
 QR-menu is Web App that allows Restaurant owners to create their own menù and share it with the public with a QR code.
 The project is based on laravel.
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-## About Laravel
+## QR-menu is based on Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 

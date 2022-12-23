@@ -5,6 +5,8 @@ $primary: $orange-500;
 $secondary: $gray-700;
 $font-family-base: 'Kulim Park', sans-serif;
 
+@import "logo";
+
 :root{
     box-sizing: border-box;
     font-family: $font-family-base;
@@ -19,6 +21,22 @@ body{
 ::after,
 ::before{
     box-sizing: inherit;
+}
+
+header{
+    nav{
+        .navbar-nav{
+            .nav-item{
+                border-right: 1px solid $secondary;
+                padding: 0 20px 0 20px;
+            }
+        }
+        .navbar-nav{
+            .nav-item:last-child{
+                border-right: 0;
+            }
+        }
+    }
 }
 
 .page-wrapper{
@@ -173,3 +191,10 @@ footer a:hover{
     color: #ffc643;
 }
 
+.mobileImage {
+    img{
+        width: 600px;
+        transform: rotate(5deg);
+        margin-right: 30px;
+    }
+}

@@ -1,5 +1,8 @@
-# Qr-menu
-Web app that allows Restaurant owners to create their own menu and share it with the public with a QR code.
+<p align="center"><img src="https://user-images.githubusercontent.com/300245/209347209-a179fd43-8a60-4de5-ad42-41a0ad744bc3.svg" width="400" alt="Laravel Logo"></p>
+
+## About QR-menu
+
+QR-menu is Web App that allows Restaurant owners to create their own menù and share it with the public with a QR code.
 The project is based on laravel.
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>

@@ -1,3 +1,5 @@
+@php use Illuminate\Support\Facades\Vite; @endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

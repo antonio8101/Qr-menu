@@ -43,7 +43,7 @@
                         <div class="collapse navbar-collapse" id="#navbarTogglerDemo01">
                             <ul class="navbar-nav container-fluid d-flex justify-content-around">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#intro">Home</a>
+                                    <a class="nav-link" href="#intro">QR Menu</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#features">How does it work</a>
@@ -83,7 +83,7 @@
         </div>
     </header>
     <section class="intro d-flex" id="intro">
-        <div class="content-box m-3 m-md-5 col-lg-8 text-left">
+        <div class="content-box m-3 m-md-5 col-lg-5 text-left">
             <h1>Crea il tuo <br> menù digitale <br> in pochi passaggi</h1>
             <div>
                 Passa al menu digitale e aumenta i clienti<br>del tuo locale grazie alla tecnologia QR Code.
@@ -92,7 +92,7 @@
             <button type="button" class="btn btn-outline-light">Scopri di più</button>
         </div>
         <div class="mobileImage justify-content-center align-items-center">
-            <img src="docs/src/iltuoristorante.svg" alt="...">
+            <img src="{{Vite::asset('resources/images/iltuoristorante.svg')}}" >
         </div>
     </section>
     <section class="features d-flex justify-content-center mt-5 mb-5" id="features">

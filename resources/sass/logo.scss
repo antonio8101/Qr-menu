@@ -1,0 +1,21 @@
+$logo-color: $secondary;
+$logo-opacity: 1;
+
+svg#app-logo{
+
+    width: 100px;
+    height: auto;
+
+    path{
+        fill: $logo-color;
+        opacity: $logo-opacity;
+    }
+    rect{
+        fill: $logo-color;
+        opacity: $logo-opacity;
+    }
+    polygon{
+        fill: $logo-color;
+        opacity: $logo-opacity;
+    }
+}

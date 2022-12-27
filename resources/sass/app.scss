@@ -1,5 +1,200 @@
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Kulim+Park:wght@400;700&display=swap');
+
+$primary: $orange-500;
+$secondary: $gray-700;
+$font-family-base: 'Kulim Park', sans-serif;
+
+@import "logo";
+
+:root{
+    box-sizing: border-box;
+    font-family: $font-family-base;
+}
 
 body{
-    background-color: red;
+    justify-content: center;
+    color: $secondary;
+}
+
+*,
+::after,
+::before{
+    box-sizing: inherit;
+}
+
+header{
+    nav{
+        .navbar-nav{
+            .nav-item{
+                border-right: 1px solid $secondary;
+                padding: 0 20px 0 20px;
+            }
+        }
+        .navbar-nav{
+            .nav-item:last-child{
+                border-right: 0;
+            }
+        }
+    }
+}
+
+.page-wrapper{
+    max-width: 1080px;
+    margin: 0 auto;
+    background-color: transparent;
+}
+
+.header-out{
+    background-color: $primary;
+}
+
+.header-in{
+    background-color: $primary;
+    max-width: 1080px;
+}
+
+.navbar{
+    background-color: $primary;
+}
+
+.navbar-nav{
+    background-color: $primary;
+    color: $secondary;
+}
+
+a.nav-link{
+    color: $secondary;
+    font-family: $font-family-base;
+    font-weight: bold;
+}
+
+a.nav-link:hover{
+    color: #ffc643;
+}
+
+select.lang-select{
+    background-color: $primary;
+    color: $secondary;
+    border: inherit;
+}
+
+.intro{
+    background-color: $primary;
+    border-radius: 0 0 50px 50px;
+}
+
+.container-fluid button:hover,
+.intro button:hover{
+    background-color: #ffc643;
+    color: $secondary;
+}
+
+.features-container{
+    max-width: available;
+}
+
+.feature-item,
+.plans-item{
+    border-radius: 15px;
+}
+
+.feature-text{
+    margin: 1em;
+}
+
+.empty-div{
+    max-width: available;
+}
+
+.services.item{
+    margin: 0 auto;
+    max-width: 1080px;
+}
+
+h1{
+    font-weight: bold;
+    font-family: $font-family-base;
+    font-size: 30px;
+    color: $secondary;
+}
+
+h4{
+    font-weight: bold;
+    color: $secondary;
+    font-family: $font-family-base;
+}
+
+h6{
+    color: #ffc643;
+}
+
+.plan-text li,
+.checked,
+footer li{
+    list-style: none;
+}
+
+.nd{
+    text-decoration: line-through;
+}
+
+.checked li:before {
+    content: '✓';
+}
+
+.checked {
+    list-style-position: outside;
+}
+
+.faqSection a {
+    color: $secondary;
+}
+
+.faqSection a:hover {
+    color: #ffc643;
+}
+
+.accordion-button{
+    color: $secondary;
+    font-family: $font-family-base;
+    background-color: white;
+}
+
+.accordion-button:focus{
+    color: $primary;
+}
+
+.accordion-body:not(.collapsed){
+    background-color: transparent;
+}
+
+.carousel{
+    $carousel-transition-duration: 6s;
+}
+
+.satisfiedCustomers{
+    background-color: $primary;
+    border-radius: 50px 50px 0 0;
+}
+
+footer{
+    background-color: $primary;
+}
+
+footer a{
+    color: $secondary;
+    text-decoration: none;
+}
+
+footer a:hover{
+    color: #ffc643;
+}
+
+.mobileImage {
+    img{
+        width: 600px;
+        transform: rotate(5deg);
+        margin-right: 30px;
+    }
 }

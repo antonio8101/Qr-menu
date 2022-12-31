@@ -37,8 +37,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Build Public UI (Blade/Vite)
+      - name: Install dependencies Public UI
         run: npm install
+      - name: Build Public UI (Blade/Vite)
+        run: npm run build
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         env:
           DB_CONNECTION: sqlite

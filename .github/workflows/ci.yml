@@ -13,7 +13,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+         node-version: [16.x]
+#        node-version: [14.x, 16.x, 18.x]
 
     steps:
       - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e

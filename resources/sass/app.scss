@@ -173,6 +173,10 @@ footer li{
     $carousel-transition-duration: 6s;
 }
 
+.carousel-caption{
+    position: static;
+}
+
 .satisfiedCustomers{
     background-color: $primary;
     border-radius: 50px 50px 0 0;
@@ -191,10 +195,21 @@ footer a:hover{
     color: #ffc643;
 }
 
+.carousel-item{
+    img{
+        margin-bottom: 2.5rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2.5rem;
+        border-radius: 100%;
+    }
+}
+
 .mobileImage {
     img{
-        width: 600px;
-        transform: rotate(5deg);
-        margin-right: 30px;
+        width: 100%;
+        //transform: rotate(5deg);
+        //transform: skew(-10deg, 10deg);
+
     }
 }

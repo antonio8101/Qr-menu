@@ -2,9 +2,9 @@ name: ci-build
 
 on:
   push:
-    branches: [ "ci_pipeline" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "ci_pipeline" ]
+    branches: [ "main" ]
 
 jobs:
   tests:

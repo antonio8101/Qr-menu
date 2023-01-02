@@ -191,10 +191,45 @@ footer a:hover{
     color: #ffc643;
 }
 
+.carousel-item{
+    img{
+        margin-bottom: 2.5rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2.5rem;
+        border-radius: 100%;
+    }
+}
+
+.carousel-caption{
+    position: static;
+}
+
 .mobileImage {
     img{
-        width: 600px;
-        transform: rotate(5deg);
-        margin-right: 30px;
+        width: 100%;
+        //transform: rotate(5deg);
+        //transform: skew(-10deg, 10deg);
+    }
+}
+
+.app-image2{
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.pc-image{
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.app-image{
+    img{
+        width: 100%;
+        height: 100%;
     }
 }

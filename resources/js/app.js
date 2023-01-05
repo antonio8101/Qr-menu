@@ -1,16 +1,7 @@
-import * as bootstrap from 'bootstrap'
-import '../sass/app.scss';
+import './bootstrap';
 
-// Needed to get assets after build : https://laravel.com/docs/9.x/vite#blade-processing-static-assets
-import.meta.glob([
-    '../images/**',
-    '../fonts/**',
-]);
+import Alpine from 'alpinejs';
 
-const myCarouselElement = document.getElementById('carouselExampleCaptions')
+window.Alpine = Alpine;
 
-// TODO: to be checked
-const carousel = new bootstrap.Carousel(myCarouselElement, {
-    interval: 6000,
-    wrap: true
-})
+Alpine.start();

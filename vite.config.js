@@ -1,16 +1,20 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import path from 'path'; // node
+import * as path from "path";
 
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/sass/app.scss', 'resources/js/app.js'],
+            input: [
+                'resources/sass/app.scss',
+                'resources/css/app.css',
+                'resources/js/app.js'
+            ],
             refresh: true,
         }),
     ],
-    resolve: {
-        alias: {
+    resolve:{
+        alias:{
             '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
         }
     },

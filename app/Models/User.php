@@ -3,14 +3,39 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Ramsey\Uuid\Uuid;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasUuids;
+
+
+    /**
+     * Generate a new Uuuid for the model.
+     *
+     * @return string
+     */
+    public function newUniqueId()
+    {
+        return (string) Uuid::uuid4();
+    }
+
+    /**
+     *
+     * Get collumn that receive a unique identifier.
+     *
+     * @return array
+     */
+    public function uniqueIds()
+    {
+        return  ['id'];
+    }
+
 
     /**
      * The attributes that are mass assignable.
@@ -29,6 +54,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
+        'id',
         'password',
         'remember_token',
     ];

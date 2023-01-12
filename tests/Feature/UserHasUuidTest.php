@@ -8,11 +8,6 @@ use Tests\TestCase;
 
 class UserHasUuidTest extends TestCase
 {
-    /*
-     * Abbiamo ovviato con RefreshDatabase per cancellare i record inseriti tramite il create(), non riuscivamo a
-     * raggiungere il DB temporaneo.
-     */
-
     use RefreshDatabase;
 
     /**

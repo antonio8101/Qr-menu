@@ -15,19 +15,13 @@ class UserHasUuidTest extends TestCase
      *
      * @return void
      */
-    public function test_created_user_has_uuid()
+    public function user_id_must_be_uuid(): void
     {
-        /*
-         * Utilizzando il make() non riuscimo a raggiungere i metodi del model. Ma se lo si definisce nella factory
-         * 'id' => fake()->uuid() funziona.
-         */
-//      $user = User::factory(1)->make();
-
         $user = User::factory(1)->create();
 
         $uuid = $user->value('id');
 
         $this->assertTrue(!is_null($uuid));
-
+        $this->assertIsString($uuid);
     }
 }

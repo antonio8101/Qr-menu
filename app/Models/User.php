@@ -21,8 +21,6 @@ class User extends Authenticatable
 
 
     /**
-     * Generate a new Uuuid for the model.
-     *
      * @return string
      */
     public function newUniqueId()
@@ -31,10 +29,7 @@ class User extends Authenticatable
     }
 
     /**
-     *
-     * Get collumn that receive a unique identifier.
-     *
-     * @return array
+     * @return string[]
      */
     public function uniqueIds()
     {

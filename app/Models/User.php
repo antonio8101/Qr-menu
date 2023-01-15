@@ -10,14 +10,17 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Ramsey\Uuid\Uuid;
 
+/**
+ * @property string $id
+ * @property string $name
+ * @property string $email
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasUuids;
 
 
     /**
-     * Generate a new Uuuid for the model.
-     *
      * @return string
      */
     public function newUniqueId()
@@ -26,10 +29,7 @@ class User extends Authenticatable
     }
 
     /**
-     *
-     * Get collumn that receive a unique identifier.
-     *
-     * @return array
+     * @return string[]
      */
     public function uniqueIds()
     {

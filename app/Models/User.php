@@ -14,10 +14,12 @@ use Ramsey\Uuid\Uuid;
  * @property string $id
  * @property string $name
  * @property string $email
+ * @property string $password
  */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasUuids;
+
 
 
     /**

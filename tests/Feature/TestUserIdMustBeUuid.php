@@ -38,6 +38,7 @@ class TestUserIdMustBeUuid extends TestCase
           $user->id = Str::uuid()->toString();
           $user->name = "James Doe";
           $user->email = fake()->email;
+          $user->password = 'password';
           $user->save();
 
           $this->assertIsString($user->id);

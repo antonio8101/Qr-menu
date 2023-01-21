@@ -1,9 +1,11 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function () {
+    return view('dashboard');
+})
+    ->middleware(['auth', 'verified'])
+    ->name('app');
 
-Route::get('/', function (){
-
-    return view('qr-menu-templates.privateArea');
-
-});
+require __DIR__.'/web-auth.php';

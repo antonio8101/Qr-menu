@@ -12,7 +12,7 @@
         <div class="container">
             <div class="plans d-flex justify-content-around row">
                 <div class="plans-item border border-warning text-center my-3 col-lg-3 col-md-5 col-sm-10">
-                    <h6>FREE</h6>
+                    <h6 class="mt-2">FREE</h6>
                     <h4>Gratis</h4>
                     <ul class="plan-text">
                         <li>
@@ -70,10 +70,10 @@
                             Supporto Tecnico
                         </li>
                     </ul>
-                    <button type="button" class="btn btn-outline-light mb-2">INIZIA SUBITO</button>
+                    <button type="button" class="btn btn-pricing mb-2">INIZIA SUBITO</button>
                 </div>
                 <div class="plans-item border border-warning text-center my-3 col-lg-3 col-md-5 col-sm-10">
-                    <h6>BASE</h6>
+                    <h6 class="mt-2">BASE</h6>
                     <h4>4,99€</h4>
                     <ul class="plan-text">
                         <li>
@@ -131,10 +131,10 @@
                             Supporto Tecnico
                         </li>
                     </ul>
-                    <button type="button" class="btn btn-outline-light mb-2">INIZIA SUBITO</button>
+                    <button type="button" class="btn btn-pricing mb-2">INIZIA SUBITO</button>
                 </div>
                 <div class="plans-item border border-warning text-center my-3 col-lg-3 col-md-5 col-sm-10">
-                    <h6>ADVANCED</h6>
+                    <h6 class="mt-2">ADVANCED</h6>
                     <h4>10,99€</h4>
                     <ul class="plan-text">
                         <li>
@@ -192,7 +192,7 @@
                             Supporto Tecnico
                         </li>
                     </ul>
-                    <button type="button" class="btn btn-outline-light mb-2">INIZIA SUBITO</button>
+                    <button type="button" class="btn btn-pricing mb-2">INIZIA SUBITO</button>
                 </div>
             </div>
         </div>

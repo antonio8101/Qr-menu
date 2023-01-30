@@ -7,9 +7,18 @@ $font-family-base: 'Kulim Park', sans-serif;
 
 @import "logo";
 
+
+// GENERAL
+
 :root{
     box-sizing: border-box;
     font-family: $font-family-base;
+}
+
+.page-wrapper{
+    max-width: 1080px;
+    margin: 0 auto;
+    background-color: transparent;
 }
 
 body{
@@ -22,6 +31,26 @@ body{
 ::before{
     box-sizing: inherit;
 }
+
+h1{
+    font-weight: bold;
+    font-family: $font-family-base;
+    font-size: 30px;
+    color: $secondary;
+}
+
+h4{
+    font-weight: bold;
+    color: $secondary;
+    font-family: $font-family-base;
+}
+
+h6{
+    color: #ffc643;
+}
+
+
+// HEADER / NAVBAR
 
 header{
     nav{
@@ -37,12 +66,6 @@ header{
             }
         }
     }
-}
-
-.page-wrapper{
-    max-width: 1080px;
-    margin: 0 auto;
-    background-color: transparent;
 }
 
 .header-out{
@@ -70,7 +93,7 @@ a.nav-link{
 }
 
 a.nav-link:hover{
-    color: #ffc643;
+    color: white;
 }
 
 select.lang-select{
@@ -79,23 +102,32 @@ select.lang-select{
     border: inherit;
 }
 
+.container-fluid button:hover{
+    background-color: white;
+    color: $primary;
+}
+
+
+// INTRO
+
 .intro{
     background-color: $primary;
     border-radius: 0 0 50px 50px;
 }
 
-.container-fluid button:hover,
 .intro button:hover{
-    background-color: #ffc643;
-    color: $secondary;
+    background-color: white;
+    color: $primary;
 }
+
+
+// FEATURES
 
 .features-container{
     max-width: available;
 }
 
-.feature-item,
-.plans-item{
+.feature-item{
     border-radius: 15px;
 }
 
@@ -103,49 +135,48 @@ select.lang-select{
     margin: 1em;
 }
 
-.empty-div{
-    max-width: available;
-}
+
+// SERVICES
 
 .services.item{
     margin: 0 auto;
     max-width: 1080px;
 }
 
-h1{
-    font-weight: bold;
-    font-family: $font-family-base;
-    font-size: 30px;
-    color: $secondary;
-}
-
-h4{
-    font-weight: bold;
-    color: $secondary;
-    font-family: $font-family-base;
-}
-
-h6{
-    color: #ffc643;
-}
-
-.plan-text li,
-.checked,
-footer li{
-    list-style: none;
-}
-
-.nd{
-    text-decoration: line-through;
+.checked{
+    list-style: none outside none;
 }
 
 .checked li:before {
     content: '✓';
 }
 
-.checked {
-    list-style-position: outside;
+
+// PRICING
+
+.plans-item{
+    border-radius: 15px;
+    li{
+        list-style: none;
+    }
 }
+
+.btn-pricing{
+    color: white;
+    background-color: $primary;
+}
+
+.btn-pricing:hover{
+    color:white;
+    background-color: $orange-700;
+}
+
+.nd{
+    text-decoration: line-through;
+}
+
+
+// F.A.Q.
 
 .faqSection a {
     color: $secondary;
@@ -169,26 +200,16 @@ footer li{
     background-color: transparent;
 }
 
-.carousel{
-    $carousel-transition-duration: 6s;
-}
+
+// CUSTOMERS
 
 .satisfiedCustomers{
     background-color: $primary;
     border-radius: 50px 50px 0 0;
 }
 
-footer{
-    background-color: $primary;
-}
-
-footer a{
-    color: $secondary;
-    text-decoration: none;
-}
-
-footer a:hover{
-    color: #ffc643;
+.carousel{
+    $carousel-transition-duration: 6s;
 }
 
 .carousel-item{
@@ -205,29 +226,38 @@ footer a:hover{
     position: static;
 }
 
-.mobileImage {
+
+// FOOTER
+
+footer{
+    background-color: $primary;
+}
+
+footer a{
+    color: $secondary;
+    text-decoration: none;
+}
+
+footer a:hover{
+    color: #ffc643;
+}
+
+footer li{
+    list-style: none;
+}
+
+
+// IMAGES
+
+.mobileImage{
     img{
         width: 100%;
-        //transform: rotate(5deg);
-        //transform: skew(-10deg, 10deg);
     }
 }
 
-.app-image2{
-    img{
-        width: 100%;
-        height: 100%;
-    }
-}
-
+.app-image,
+.app-image2,
 .pc-image{
-    img{
-        width: 100%;
-        height: 100%;
-    }
-}
-
-.app-image{
     img{
         width: 100%;
         height: 100%;

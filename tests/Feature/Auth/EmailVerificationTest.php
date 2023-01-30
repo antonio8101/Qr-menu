@@ -43,7 +43,7 @@ class EmailVerificationTest extends TestCase
 
         Event::assertDispatched(Verified::class);
         $this->assertTrue($user->fresh()->hasVerifiedEmail());
-        $response->assertRedirect( env('PRIVATEAREA_URL').'?verified=1');
+        $response->assertRedirect( '/email?verified=1');
     }
 
     public function test_email_is_not_verified_with_invalid_hash(): void

@@ -60,7 +60,7 @@
   },
   "scripts": {
     "privatearea-start": "node scripts/start.js",
-    "privateare-build": "node scripts/build.js",
+    "privatearea-build": "node scripts/build.js",
     "privatearea-test": "node scripts/test.js",
     "privatearea-eject": "node scripts/eject.js"
   },

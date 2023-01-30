@@ -1,34 +1,56 @@
 import React from "react";
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
-
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
 
 const UrlDestroySessionLaravel = 'http://localhost:8000/logout'
+const baseURL = 'app';
 
- export function App() {
-  return  (
-      <div>
-          <BrowserRouter>
-              <Routes>
-              <Route path={"/profile"} element={<Profile/>}>
-              </Route>
-              </Routes>
-          </BrowserRouter>
-      </div>
-  )
+function Menu() {
+    return (<nav>
+        <ul>
+            <li><Link to={`${baseURL}/`}>HOME</Link></li>
+            <li><Link to={`${baseURL}/profile`}>PROFILE</Link></li>
+        </ul>
+    </nav>);
 }
- export function Profile (){
+
+export function App() {
     return (
         <div>
-        <h1> Profile test page </h1>
-    </div>
+            <BrowserRouter>
+                <Menu />
+                <Routes>
+                    <Route exact path={`${baseURL}/`} element={<Dashboard/>}></Route>
+                    <Route exact path={`${baseURL}/profile`} element={<Profile/>}/>
+                    <Route exact path={"*"} element={<div>NOT-FOUND</div>}></Route>
+                </Routes>
+            </BrowserRouter>
+        </div>
     )
 }
 
-export function ButtonLogout(){
+export function Dashboard() {
     return (
-        <button onClick={urlLogout} >LOG OUT</button>
+        <div>
+            <h1> DASHBOARD </h1>
+        </div>
     )
 }
-function urlLogout(){
+
+
+export function Profile() {
+    return (
+        <div>
+            <h1> PROFILE PAGE </h1>
+        </div>
+    )
+}
+
+export function ButtonLogout() {
+    return (
+        <button onClick={urlLogout}>LOG OUT</button>
+    )
+}
+
+function urlLogout() {
     return (window.location.assign(UrlDestroySessionLaravel))
 }

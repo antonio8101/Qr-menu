@@ -209,13 +209,13 @@ module.exports = function (webpackEnv) {
       // There will be one main bundle, and one file per asynchronous chunk.
       // In development, it does not produce real files.
       filename: isEnvProduction
-        ? 'static/js/[name].[contenthash:8].js'
+        ? 'static/js/[name].js'
         : isEnvDevelopment && 'static/js/bundle.js',
       // There are also additional JS chunk files if you use code splitting.
       chunkFilename: isEnvProduction
-        ? 'static/js/[name].[contenthash:8].chunk.js'
+        ? 'static/js/[name].chunk.js'
         : isEnvDevelopment && 'static/js/[name].chunk.js',
-      assetModuleFilename: 'static/media/[name].[hash][ext]',
+      assetModuleFilename: 'static/media/[name].[ext]',
       // webpack uses `publicPath` to determine where the app is being served from.
       // It requires a trailing slash, or the file assets will get an incorrect path.
       // We inferred the "public path" (such as / or /my-project) from homepage.
@@ -419,7 +419,7 @@ module.exports = function (webpackEnv) {
                     },
                   ],
                 ],
-                
+
                 plugins: [
                   isEnvDevelopment &&
                     shouldUseReactRefresh &&
@@ -453,7 +453,7 @@ module.exports = function (webpackEnv) {
                 cacheDirectory: true,
                 // See #6846 for context on why cacheCompression is disabled
                 cacheCompression: false,
-                
+
                 // Babel sourcemaps are needed for debugging into node_modules
                 // code.  Without the options below, debuggers like VSCode
                 // show incorrect code and set breakpoints on the wrong lines.
@@ -625,8 +625,8 @@ module.exports = function (webpackEnv) {
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           // both options are optional
-          filename: 'static/css/[name].[contenthash:8].css',
-          chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
+          filename: 'static/css/[name].css',
+          chunkFilename: 'static/css/[name].chunk.css',
         }),
       // Generate an asset manifest file with the following content:
       // - "files" key: Mapping of all asset filenames to their corresponding

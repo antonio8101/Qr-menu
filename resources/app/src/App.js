@@ -24,6 +24,7 @@ export function App() {
                     <Route exact path={"*"} element={<div>NOT-FOUND</div>}></Route>
                 </Routes>
             </BrowserRouter>
+            <ButtonLogout/>
         </div>
     )
 }

@@ -49,13 +49,6 @@
                             <li class="nav-item">
                                 <a class="nav-link">Contacts</a>
                             </li>
-                            <li class="nav-item select d-flex align-items-center justify-content-center">
-                                <select class="lang-select" aria-label="Default select example">
-                                    <option value="1">ITA</option>
-                                    <option value="2">ENG</option>
-                                    <option value="3">ESP</option>
-                                </select>
-                            </li>
                         </ul>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -63,7 +56,7 @@
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <button type="button" class="btn btn-outline-light">Login</button>
+                    <a href="/login" class="btn btn-outline-light">Login</a>
                 </div>
             </nav>
         </div>

@@ -19,3 +19,5 @@ yarn-error.log
 /.vscode
 /public/php_errors.log
 /php_errors.log
+/public/build-privatearea
+resources/app/node_modules

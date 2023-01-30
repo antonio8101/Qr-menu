@@ -39,10 +39,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies Public UI
         run: npm install
+      - name: Build Private Area UI (React)
+        run: npm run privatearea-build
       - name: Build Public UI (Blade/Vite)
         run: npm run build
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
+          PRIVATEAREA_URL: app/
         run: vendor/bin/phpunit

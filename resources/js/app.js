@@ -1,4 +1,4 @@
-import './bootstrap';
+import * as bootstrap from 'bootstrap'
 import '../sass/app.scss';
 
 // Needed to get assets after build : https://laravel.com/docs/9.x/vite#blade-processing-static-assets

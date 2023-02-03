@@ -1,0 +1,54 @@
+header{
+    nav{
+        .navbar-nav{
+            .nav-item{
+                border-right: 1px solid $secondary;
+                padding: 0 20px 0 20px;
+            }
+        }
+        .navbar-nav{
+            .nav-item:last-child{
+                border-right: 0;
+            }
+        }
+    }
+}
+
+.header-out{
+    background-color: $primary;
+}
+
+.header-in{
+    background-color: $primary;
+    max-width: 1080px;
+}
+
+.navbar{
+    background-color: $primary;
+}
+
+.navbar-nav{
+    background-color: $primary;
+    color: $secondary;
+}
+
+a.nav-link{
+    color: $secondary;
+    font-family: $font-family-base;
+    font-weight: bold;
+}
+
+a.nav-link:hover{
+    color: white;
+}
+
+select.lang-select{
+    background-color: $primary;
+    color: $secondary;
+    border: inherit;
+}
+
+.container-fluid button:hover{
+    background-color: white;
+    color: $primary;
+}

@@ -1,0 +1,22 @@
+.satisfiedCustomers{
+    background-color: $primary;
+    border-radius: 50px 50px 0 0;
+}
+
+.carousel{
+    $carousel-transition-duration: 6s;
+}
+
+.carousel-item{
+    img{
+        margin-bottom: 2.5rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2.5rem;
+        border-radius: 100%;
+    }
+}
+
+.carousel-caption{
+    position: static;
+}

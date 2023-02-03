@@ -1,0 +1,38 @@
+:root{
+    box-sizing: border-box;
+    font-family: $font-family-base;
+}
+
+.page-wrapper{
+    max-width: 1080px;
+    margin: 0 auto;
+    background-color: transparent;
+}
+
+body{
+    justify-content: center;
+    color: $secondary;
+}
+
+*,
+::after,
+::before{
+    box-sizing: inherit;
+}
+
+h1{
+    font-weight: bold;
+    font-family: $font-family-base;
+    font-size: 30px;
+    color: $secondary;
+}
+
+h4{
+    font-weight: bold;
+    color: $secondary;
+    font-family: $font-family-base;
+}
+
+h6{
+    color: #ffc643;
+}

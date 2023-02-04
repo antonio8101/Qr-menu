@@ -1,10 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Kulim+Park:wght@400;700&display=swap');
-
-$primary: $orange-500;
-$secondary: $gray-700;
-$font-family-base: 'Kulim Park', sans-serif;
-
+@import "colors.scss";
+@import "fonts.scss";
 @import "logo";
 @import "public.scss";
 @import "auth.scss";
+@import "private-area.scss";

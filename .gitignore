@@ -21,3 +21,4 @@ yarn-error.log
 /php_errors.log
 /public/build-privatearea
 resources/app/node_modules
+/resources/app/build

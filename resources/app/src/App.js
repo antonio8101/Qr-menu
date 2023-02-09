@@ -1,8 +1,12 @@
-import React from "react";
-import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
+import React, {useEffect, useState} from "react";
+import {BrowserRouter, Link, Route, Routes, useNavigate} from 'react-router-dom';
+import Button from "bootstrap/js/src/button";
+import {useGetQueryParams} from "./hooks/useGetQueryParams";
+import {APP_URL, BASE_ADDRESS, LOGIN_URL, LOGOUT_URL} from "./consts";
+import {useStoredUser} from "./hooks/useStoredUser";
 
-const UrlDestroySessionLaravel = 'http://localhost:8000/logout'
-const baseURL = 'app';
+const UrlDestroySessionLaravel = LOGOUT_URL;
+const baseURL = BASE_ADDRESS;
 
 function Menu() {
     return (<nav>
@@ -13,18 +17,68 @@ function Menu() {
     </nav>);
 }
 
+const EnsureLoggedIn = ({children}) => {
+
+    const [getStoredUser, setStoredUser] = useStoredUser();
+    const [user, setUser] = useState();
+    const getQueryParams = useGetQueryParams();
+    const navigate = useNavigate();
+    const url = LOGIN_URL;
+
+    const auth_code = getQueryParams('code');
+
+    useEffect(() => {
+
+        if (user){
+            return;
+        }
+
+        let storedUser = getStoredUser();
+        if (storedUser) {
+            setUser(storedUser);
+        }
+        else if (auth_code != null){
+
+            // TODO: recupera in qualche modo l'utente e lo setta nello stato
+
+            setStoredUser({
+                id: 1,
+                name: 'test'
+            });
+
+            setUser(getStoredUser());
+            navigate(BASE_ADDRESS);
+        } else {
+
+            window.location = LOGIN_URL;
+
+        }
+
+    }, [user]);
+
+
+    if (!user){
+        return <><button onClick={() => { window.location = url}}>GO TO LOGIN</button></>;
+    } else {
+        return <>{children}</>;
+    }
+}
+
 export function App() {
     return (
         <div>
             <BrowserRouter>
-                <Menu />
-                <Routes>
-                    <Route exact path={`${baseURL}`} element={<Dashboard/>}></Route>
-                    <Route exact path={`${baseURL}/profile`} element={<Profile/>}/>
-                    <Route exact path={"*"} element={<div>NOT-FOUND</div>}></Route>
-                </Routes>
+                <EnsureLoggedIn>
+                    <Menu/>
+                    <Routes>
+                        <Route exact path={`${baseURL}`} element={<Dashboard/>}></Route>
+                        <Route exact path={`${baseURL}/profile`} element={<Profile/>}/>
+                        <Route exact path={"*"} element={<div>NOT-FOUND</div>}></Route>
+                    </Routes>
+                    <ButtonLogout/>
+                </EnsureLoggedIn>
             </BrowserRouter>
-            <ButtonLogout/>
+
         </div>
     )
 }
@@ -37,7 +91,6 @@ export function Dashboard() {
     )
 }
 
-
 export function Profile() {
     return (
         <div>
@@ -47,11 +100,12 @@ export function Profile() {
 }
 
 export function ButtonLogout() {
-    return (
-        <button onClick={urlLogout}>LOG OUT</button>
-    )
+
+    const [getStoredUser, , removeUser] = useStoredUser();
+
+    return (<button onClick={() => {
+        removeUser();
+        window.location = LOGOUT_URL;
+    }}>LOGOUT</button>)
 }
 
-function urlLogout() {
-    return (window.location.assign(UrlDestroySessionLaravel))
-}

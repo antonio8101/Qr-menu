@@ -69,12 +69,12 @@ Route::middleware('auth')
 });
 
 // TODO: this is to be refined
-Route::prefix('auth')->get( '/callback', function ( Request $request ) {
-
-    return response([
-        'auth_code' => $request->code
-    ]);
-} );
+//Route::prefix('auth')->get( '/callback', function ( Request $request ) {
+//
+//    return response([
+//        'auth_code' => $request->code
+//    ]);
+//} );
 
 Route::get('/login', function (Request $request) {
     $request->session()->put('state', $state = Str::random(40));
@@ -83,7 +83,7 @@ Route::get('/login', function (Request $request) {
 
     // TODO: this is to be refined
     $client = DB::table( 'oauth_clients' )
-                ->where( 'name', 'MYCLIENT' )
+                ->where( 'name', 'SPA' )
                 ->first();
 
     $client_id    = $client->id;

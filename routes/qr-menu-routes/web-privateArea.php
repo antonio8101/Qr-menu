@@ -20,5 +20,3 @@ Route::get('/email', function (){
     return 'email-verified';
 })->middleware(['auth', 'verified'])
      ->name('email.verification');
-
-require __DIR__.'/web-auth.php';

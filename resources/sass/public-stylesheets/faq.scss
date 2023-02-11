@@ -3,11 +3,11 @@
 }
 
 .faqSection a:hover {
-    color: #ffc643;
+    color: $primary;
 }
 
 .accordion-button{
-    color: $secondary;
+    color: $primary;
     font-family: $font-family-base;
     background-color: white;
 }

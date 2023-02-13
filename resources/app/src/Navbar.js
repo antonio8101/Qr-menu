@@ -1,6 +1,5 @@
 import React from "react";
 import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
-
 const UrlDestroySessionLaravel = 'http://localhost:8000/logout'
 const baseURL = 'app';
 
@@ -13,18 +12,18 @@ function Menu() {
     </nav>);
 }
 
-export function App() {
+export function Navbar() {
     return (
         <div>
-            <BrowserRouter>
+             <BrowserRouter>
                 <Menu />
-                <Routes>
+                 <Routes>
                     <Route exact path={`${baseURL}`} element={<Dashboard/>}></Route>
                     <Route exact path={`${baseURL}/profile`} element={<Profile/>}/>
                     <Route exact path={"*"} element={<div>NOT-FOUND</div>}></Route>
-                </Routes>
-            </BrowserRouter>
-            <ButtonLogout/>
+                 </Routes>
+             </BrowserRouter>
+             <ButtonLogout/>
         </div>
     )
 }
@@ -32,7 +31,6 @@ export function App() {
 export function Dashboard() {
     return (
         <div>
-            <h1> DASHBOARD </h1>
         </div>
     )
 }
@@ -41,7 +39,6 @@ export function Dashboard() {
 export function Profile() {
     return (
         <div>
-            <h1> PROFILE PAGE </h1>
         </div>
     )
 }

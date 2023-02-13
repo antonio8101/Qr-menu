@@ -8,7 +8,9 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
+use phpseclib3\Crypt\Hash;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -27,6 +29,8 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        Session::put('token',$request->user()->id);
+
         $request->session()->regenerate();
 
         return redirect()->intended(env('PRIVATEAREA_URL'));
@@ -38,6 +42,8 @@ class AuthenticatedSessionController extends Controller
     public function logout(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
+
+        $request->session()->remove('token');
 
         $request->session()->invalidate();
 
@@ -51,7 +57,10 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+
         Auth::guard('web')->logout();
+
+        $request->session()->remove('token');
 
         $request->session()->invalidate();
 

@@ -1,0 +1,12 @@
+.services.item{
+    margin: 0 auto;
+    max-width: 1080px;
+}
+
+.checked{
+    list-style: none outside none;
+}
+
+.checked li:before {
+    content: '✓';
+}

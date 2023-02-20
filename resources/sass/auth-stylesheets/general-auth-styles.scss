@@ -1,0 +1,70 @@
+.fp-text{
+    color: $secondary;
+}
+
+.checkbox{
+    border-color: $primary;
+    border-radius: 5px;
+
+}
+
+.checkbox:checked{
+    color: $primary;
+}
+
+.checkbox-text{
+    color: $secondary;
+}
+
+.underline{
+    color: $secondary;
+
+}
+
+.underline:hover{
+    color: $gray-900;
+}
+
+.label-component{
+    color: $secondary;
+}
+
+.button-component{
+    background-color: $primary;
+    color: white;
+    border-radius: 5px;
+}
+
+.button-component:hover{
+    background-color: $orange-700;
+}
+
+.button-component:focus{
+     background-color: $orange-700;
+}
+
+.button-component:active{
+      background-color: $orange-900;
+}
+
+.input-text-component{
+    border-radius: 5px;
+    border-color: $primary;
+}
+
+.input-text-component:focus{
+    border-color: $secondary;
+}
+
+#app-logo{
+    color: $secondary;
+}
+
+.guest-body{
+    color: $gray-900;
+}
+
+.guest-div{
+    background-color: $gray-100;
+}
+

@@ -1,0 +1,25 @@
+.plans-item{
+    border-radius: 15px;
+    li{
+        list-style: none;
+    }
+}
+
+.btn-pricing{
+    color: white;
+    background-color: $primary;
+}
+
+.btn-pricing:hover{
+    color:white;
+    background-color: $primary;
+}
+
+.nd{
+    text-decoration: line-through;
+}
+
+.btn{
+    color:white;
+    background-color: $primary;
+}

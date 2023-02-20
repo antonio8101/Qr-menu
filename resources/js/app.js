@@ -1,5 +1,6 @@
 import * as bootstrap from 'bootstrap'
-import '../sass/app.scss';
+import '../sass/public.scss';
+import '../sass/auth.scss';
 
 // Needed to get assets after build : https://laravel.com/docs/9.x/vite#blade-processing-static-assets
 import.meta.glob([

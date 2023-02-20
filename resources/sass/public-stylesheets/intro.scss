@@ -1,0 +1,9 @@
+.intro{
+    background-color: $primary;
+    border-radius: 0 0 50px 50px;
+}
+
+.intro button:hover{
+    background-color: white;
+    color: $primary;
+}

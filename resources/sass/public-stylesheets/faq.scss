@@ -1,0 +1,21 @@
+.faqSection a {
+    color: $secondary;
+}
+
+.faqSection a:hover {
+    color: $primary;
+}
+
+.accordion-button{
+    color: $primary;
+    font-family: $font-family-base;
+    background-color: white;
+}
+
+.accordion-button:focus{
+    color: $primary;
+}
+
+.accordion-body:not(.collapsed){
+    background-color: transparent;
+}

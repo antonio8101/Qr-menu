@@ -8,8 +8,8 @@ on:
 
 jobs:
   tests:
-
     runs-on: ubuntu-latest
+    environment: build
 
     strategy:
       matrix:
@@ -17,6 +17,9 @@ jobs:
 #        node-version: [14.x, 16.x, 18.x]
 
     steps:
+      - name: Use variables
+        run: |
+          echo "test var,  get value : ${{ vars.REACT_APP_CLIENT_ID }}"
       - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
         with:
           php-version: '8.2'

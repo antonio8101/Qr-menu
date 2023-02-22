@@ -1,11 +1,11 @@
 import React, {Suspense, useEffect, useState} from "react";
 import {BrowserRouter, Link, Route, Routes, useNavigate} from 'react-router-dom';
 import {useGetQueryParams} from "./hooks/useGetQueryParams";
-import {BASE_ADDRESS, LOGIN_URL, LOGOUT_URL} from "./consts";
+import {APP_SUBFOLDER, LOGIN_URL, LOGOUT_URL} from "./consts";
 import {useStoredUser} from "./hooks/useStoredUser";
 import {useLogin} from "./hooks/useLogin";
 
-const baseURL = BASE_ADDRESS + '/';
+const baseURL = APP_SUBFOLDER + '/';
 
 console.log(baseURL);
 
@@ -47,7 +47,6 @@ export function EnsureLoggedIn({children}) {
     const login = useLogin();
     const getQueryParams = useGetQueryParams();
     const navigate = useNavigate();
-    const url = LOGIN_URL;
 
     useEffect(() => {
 
@@ -67,7 +66,7 @@ export function EnsureLoggedIn({children}) {
                 await login(auth_code);
 
                 setUser(getStoredUser());
-                navigate('/' + BASE_ADDRESS);
+                navigate('/' + APP_SUBFOLDER);
             }
 
             doLogin().then();
@@ -82,7 +81,7 @@ export function EnsureLoggedIn({children}) {
 
 
     if (!user){
-        return <><button onClick={() => { window.location = url}}>GO TO LOGIN</button></>;
+        return <>redirecting..</>;
     } else {
         return <>{children}</>;
     }

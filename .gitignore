@@ -22,4 +22,4 @@ yarn-error.log
 /public/build-privatearea
 resources/app/node_modules
 /resources/app/build
-/resources/app/.env
+resources/app/.env

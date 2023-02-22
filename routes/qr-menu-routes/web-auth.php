@@ -81,17 +81,9 @@ Route::get('/login', function (Request $request) {
 
     $server = env( 'APP_URL' );
 
-    // TODO: this is to be refined
-    $client = DB::table( 'oauth_clients' )
-                ->where( 'name', 'SPA' )
-                ->first();
-
-    $client_id    = $client->id;
-    $redirect_uri = $client->redirect;
-
     $query = http_build_query([
-        'client_id' => $client_id,
-        'redirect_uri' => $redirect_uri,
+        'client_id' => env('REACT_APP_CLIENT_ID'),
+        'redirect_uri' => env('REACT_APP_CLIENT_CALLBACK'),
         'response_type' => 'code',
         'scope' => '',
         'state' => $state,

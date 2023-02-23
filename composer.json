@@ -44,7 +44,7 @@
         ],
         "pre-install-cmd": [
             "@php -r \"file_exists('.env') || copy('.env.base', '.env');\"",
-            "@php -r \"file_exists('/resources/app/.env') || copy('/resources/app/.env.base', '/resources/app/.env')\""
+            "@php -r \"file_exists('/resources/app/.env') || copy('/resources/app/.env.base', '/resources/app/.env');\""
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"

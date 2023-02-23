@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-$reactAppUri = ['profile'];
+$reactAppUri = ['profile','callback'];
 
 Route::get('/', function () {
     return view('layouts.app');

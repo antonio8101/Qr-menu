@@ -6,9 +6,11 @@ export const httpClient = axios.create({
     baseURL: baseUrl
 });
 
-export const authenticatedHttpClient = axios.create({
-    baseURL: baseUrl,
-    headers: {
-        Authorization: `Bearer ${getAccessToken()}`
-    }
-});
+export const getAuthenticatedHttpClient = () => {
+    return axios.create({
+        baseURL: baseUrl,
+        headers: {
+            Authorization: `Bearer ${getAccessToken()}`
+        }
+    });
+};

@@ -1,4 +1,4 @@
-import {authenticatedHttpClient, httpClient} from "./httpClient";
+import {getAuthenticatedHttpClient, httpClient} from "./httpClient";
 import {APP_URL, CLIENT_ID, CLIENT_SECRET, GETACCESSTOKEN_URL, USER_INFO} from "./consts";
 
 export async function getAccessToken(auth_code) {
@@ -29,6 +29,7 @@ export async function getAccessToken(auth_code) {
 }
 
 export async function getUserInfo(){
-    const service_response = await authenticatedHttpClient.get(USER_INFO);
+    const httpClient = getAuthenticatedHttpClient();
+    const service_response = await httpClient.get(USER_INFO);
     return service_response.data;
 }

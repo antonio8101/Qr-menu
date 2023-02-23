@@ -28,7 +28,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Use variables with PHP
         run: |
-          php -r "print_r(getenv('DAY_OF_WEEK'));"
+          php -r "print_r(getenv('REACT_APP_CLIENT_ID'));"
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.base', '.env');"
       - name: Install Dependencies

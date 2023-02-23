@@ -7,7 +7,9 @@ on:
     branches: [ "*" ]
 
 env:
-  DAY_OF_WEEK: Monday
+  REACT_APP_CLIENT_ID: ${{ vars.REACT_APP_CLIENT_ID }}
+  REACT_APP_CLIENT_SECRET: ${{ vars.REACT_APP_CLIENT_SECRET }}
+  REACT_APP_CLIENT_CALLBACK: ${{ vars.REACT_APP_CLIENT_CALLBACK }}
 
 jobs:
   tests:

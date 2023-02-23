@@ -10,6 +10,8 @@ env:
   REACT_APP_CLIENT_ID: ${{ vars.REACT_APP_CLIENT_ID }}
   REACT_APP_CLIENT_SECRET: ${{ vars.REACT_APP_CLIENT_SECRET }}
   REACT_APP_CLIENT_CALLBACK: ${{ vars.REACT_APP_CLIENT_CALLBACK }}
+  BUILD_PATH: '../../public/build-privatearea'
+  REACT_APP_SERVER_ADDRESS: 'http://localhost:8000/'
 
 jobs:
   tests:

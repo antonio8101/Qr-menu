@@ -17,13 +17,13 @@ jobs:
 #        node-version: [14.x, 16.x, 18.x]
 
     steps:
-      - name: Use variables
-        run: |
-          php print_r(getenv());
       - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
         with:
           php-version: '8.2'
       - uses: actions/checkout@v3
+      - name: Use variables with PHP
+        run: |
+          php -r "print_r(getenv());"
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.base', '.env');"
       - name: Install Dependencies

@@ -23,8 +23,7 @@ class PassportClientCreator implements PassportClientCreatorContract
         if ($client != null) {
             return;
         }
-        else {
-            DB::table(self::TABLE_NAME)
+        else DB::table(self::TABLE_NAME)
                 ->insert(['id' => $id,
                     'secret' => $secret,
                     'redirect' => $callbackUrl,
@@ -35,6 +34,5 @@ class PassportClientCreator implements PassportClientCreatorContract
                     'created_at' => date('c'),
                     'updated_at' => date('c')
                 ]);
-        }
     }
 }

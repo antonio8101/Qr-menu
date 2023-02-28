@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 
+use App\Services\Contracts\PassportClientCreatorContract;
 use App\Services\PassportClientCreator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
@@ -26,7 +27,7 @@ class Qrmenu_create_client extends Command
 
     protected $passportClientCreator;
 
-    public function __construct(PassportClientCreator $clientCreator)
+    public function __construct(PassportClientCreatorContract $clientCreator)
     {
             parent::__construct();
             $this->passportClientCreator = $clientCreator;

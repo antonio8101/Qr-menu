@@ -12,6 +12,12 @@ class AuthenticationTest extends TestCase {
 
     use RefreshDatabase;
 
+    public function test_at_least_client_exists(): void {
+
+        $existsAtLeastOneClient = DB::table('oauth_clients')->exists();
+        $this->assertTrue($existsAtLeastOneClient);
+    }
+
     public function test_login_screen_can_be_rendered(): void {
         $this->followingRedirects()
              ->get( '/login' )

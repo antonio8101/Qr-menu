@@ -79,8 +79,6 @@ Route::middleware('auth')
 Route::get('/login', function (Request $request) {
     $request->session()->put('state', $state = Str::random(40));
 
-    $server = env( 'APP_URL' );
-
     $query = http_build_query([
         'client_id' => env('REACT_APP_CLIENT_ID'),
         'redirect_uri' => env('REACT_APP_CLIENT_CALLBACK'),
@@ -90,5 +88,7 @@ Route::get('/login', function (Request $request) {
         'prompt' => 'login'
     ]);
 
-    return redirect($server . '/oauth/authorize?' . $query);
+    $url = '/oauth/authorize?' . $query;
+
+    return redirect($url);
 });

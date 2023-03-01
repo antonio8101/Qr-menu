@@ -12,7 +12,7 @@ export async function getAccessToken(auth_code) {
     formData.append("grant_type", "authorization_code");
     formData.append("client_id", CLIENT_ID);
     formData.append("client_secret", CLIENT_SECRET);
-    formData.append("redirect_uri", APP_URL + 'callback');
+    formData.append("redirect_uri", APP_URL);
     formData.append("code", auth_code);
 
     const headers = new Headers();

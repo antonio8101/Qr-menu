@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -10,8 +12,11 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use Illuminate\Support\Str;
 
-Route::middleware('guest')->group(function () {
+Route::middleware('guest')
+    ->prefix('auth')
+    ->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
@@ -38,7 +43,9 @@ Route::middleware('guest')->group(function () {
 Route::get('logout', [AuthenticatedSessionController::class, 'logout'])
      ->name('web.logout');
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')
+    ->prefix('auth')
+    ->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
         ->name('verification.notice');
 
@@ -59,4 +66,29 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+});
+
+// TODO: this is to be refined
+//Route::prefix('auth')->get( '/callback', function ( Request $request ) {
+//
+//    return response([
+//        'auth_code' => $request->code
+//    ]);
+//} );
+
+Route::get('/login', function (Request $request) {
+    $request->session()->put('state', $state = Str::random(40));
+
+    $query = http_build_query([
+        'client_id' => env('REACT_APP_CLIENT_ID'),
+        'redirect_uri' => env('REACT_APP_CLIENT_CALLBACK'),
+        'response_type' => 'code',
+        'scope' => '',
+        'state' => $state,
+        'prompt' => 'login'
+    ]);
+
+    $url = '/oauth/authorize?' . $query;
+
+    return redirect($url);
 });

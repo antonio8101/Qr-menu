@@ -29,7 +29,6 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/qr-menu-routes/web-public.php'));
 
             Route::middleware('web')
-                ->prefix('auth')
                 ->group(base_path('routes/qr-menu-routes/web-auth.php'));
 
             Route::middleware('web')

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\Contracts\PassportClientCreatorContract;
+use App\Services\PassportClientCreator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,9 +13,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register():void
     {
-        //
+
+        $this->app->bind(PassportClientCreatorContract::class, PassportClientCreator::class);
+
     }
 
     /**

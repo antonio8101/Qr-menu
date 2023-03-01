@@ -6,10 +6,18 @@ on:
   pull_request:
     branches: [ "*" ]
 
+env:
+  APP_URL: ${{ vars.APP_URL }}
+  REACT_APP_CLIENT_ID: ${{ vars.REACT_APP_CLIENT_ID }}
+  REACT_APP_CLIENT_SECRET: ${{ vars.REACT_APP_CLIENT_SECRET }}
+  REACT_APP_CLIENT_CALLBACK: ${{ vars.REACT_APP_CLIENT_CALLBACK }}
+  BUILD_PATH: '../../public/build-privatearea'
+  REACT_APP_SERVER_ADDRESS: ${{ vars.APP_URL }}
+
 jobs:
   tests:
-
     runs-on: ubuntu-latest
+    environment: build
 
     strategy:
       matrix:
@@ -21,10 +29,8 @@ jobs:
         with:
           php-version: '8.2'
       - uses: actions/checkout@v3
-      - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.base', '.env');"
       - name: Install Dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        run: composer install -q --no-ansi --no-interaction --no-progress --prefer-dist
       - name: Generate key
         run: php artisan key:generate
       - name: Directory Permissions
@@ -48,4 +54,8 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
           PRIVATEAREA_URL: app/
+          REACT_APP_CLIENT_ID: ${{ vars.REACT_APP_CLIENT_ID }}
+          REACT_APP_CLIENT_SECRET: ${{ vars.REACT_APP_CLIENT_SECRET }}
+          REACT_APP_CLIENT_CALLBACK: ${{ vars.REACT_APP_CLIENT_CALLBACK }}
+          APP_URL: ${{ vars.APP_URL }}
         run: vendor/bin/phpunit

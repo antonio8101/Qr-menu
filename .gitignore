@@ -24,3 +24,4 @@ resources/app/node_modules
 /resources/app/build
 resources/app/.env
 phpunit.xml
+/secrets/oauth/*.key

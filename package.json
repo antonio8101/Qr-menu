@@ -3,6 +3,7 @@
     "scripts": {
         "dev": "vite",
         "privatearea-build": "cd resources/app && npm install && npm run privatearea-build",
+        "privatearea-run": "cd resources/app && npm install && npm run privatearea-start",
         "build": "vite build"
     },
     "devDependencies": {

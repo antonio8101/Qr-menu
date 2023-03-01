@@ -37,11 +37,11 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan passport:keys"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan passport:keys"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "pre-install-cmd": [
             "@php -r \"file_exists('.env') || copy('.env.base', '.env');\"",

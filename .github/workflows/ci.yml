@@ -60,5 +60,8 @@ jobs:
           PRIVATEAREA_CLIENT_ID: ${{ vars.PRIVATEAREA_CLIENT_ID }}
           PRIVATEAREA_CLIENT_SECRET: ${{ vars.PRIVATEAREA_CLIENT_SECRET }}
           PRIVATEAREA_CLIENT_CALLBACK: ${{ vars.PRIVATEAREA_CLIENT_CALLBACK }}
+          REACT_APP_HOST: ${{ vars.REACT_APP_HOST }}
+          REACT_APP_CLIENT_ID: ${{ vars.PRIVATEAREA_CLIENT_ID }}
+          REACT_APP_CLIENT_SECRET: ${{ vars.PRIVATEAREA_CLIENT_SECRET }}
           APP_URL: ${{ vars.APP_URL }}
         run: vendor/bin/phpunit

@@ -54,8 +54,8 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
           PRIVATEAREA_URL: app/
-          REACT_APP_CLIENT_ID: ${{ vars.REACT_APP_CLIENT_ID }}
-          REACT_APP_CLIENT_SECRET: ${{ vars.REACT_APP_CLIENT_SECRET }}
-          REACT_APP_CLIENT_CALLBACK: ${{ vars.REACT_APP_CLIENT_CALLBACK }}
+          PRIVATEAREA_CLIENT_ID: ${{ vars.REACT_APP_CLIENT_ID }}
+          PRIVATEAREA_CLIENT_SECRET: ${{ vars.REACT_APP_CLIENT_SECRET }}
+          PRIVATEAREA_CLIENT_CALLBACK: ${{ vars.REACT_APP_CLIENT_CALLBACK }}
           APP_URL: ${{ vars.APP_URL }}
         run: vendor/bin/phpunit

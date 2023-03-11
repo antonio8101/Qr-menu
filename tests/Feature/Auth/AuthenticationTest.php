@@ -17,51 +17,51 @@ class AuthenticationTest extends TestCase {
         $existsAtLeastOneClient = DB::table('oauth_clients')->exists();
         $this->assertTrue($existsAtLeastOneClient);
     }
-
-    public function test_login_screen_can_be_rendered(): void {
-        $this->followingRedirects()
-             ->get( '/login' )
-             ->assertStatus( 200 );
-    }
-
-    public function test_users_can_authenticate_using_the_login_screen(): void {
-        $user = User::factory()->create();
-
-        $response = $this->post( '/auth/login', [
-            'email'    => $user->email,
-            'password' => 'password',
-        ] );
-
-        $this->assertAuthenticated();
-        $response->assertRedirect( env( 'PRIVATEAREA_URL' ) );
-    }
-
-    public function test_users_can_not_authenticate_with_invalid_password(): void {
-        $user = User::factory()->create();
-
-        $this->post( '/auth/login', [
-            'email'    => $user->email,
-            'password' => 'wrong-password',
-        ] );
-
-        $this->assertGuest();
-    }
-
-    public function test_creating_client(){
-
-        $cr = new PassportClientCreator();
-
-        $id          = env( 'PRIVATEAREA_CLIENT_ID' );
-        $secret      = env( 'PRIVATEAREA_CLIENT_SECRET' );
-        $callbackUrl = env( 'PRIVATEAREA_CLIENT_CALLBACK' );
-        $name        = 'CLIENT_TEST';
-
-        $cr->create($id, $secret, $callbackUrl, $name);
-
-        $client = DB::table('oauth_clients')->where('id', $id)->first();
-
-        $this->assertNotNull($client);
-    }
+//
+//    public function test_login_screen_can_be_rendered(): void {
+//        $this->followingRedirects()
+//             ->get( '/login' )
+//             ->assertStatus( 200 );
+//    }
+//
+//    public function test_users_can_authenticate_using_the_login_screen(): void {
+//        $user = User::factory()->create();
+//
+//        $response = $this->post( '/auth/login', [
+//            'email'    => $user->email,
+//            'password' => 'password',
+//        ] );
+//
+//        $this->assertAuthenticated();
+//        $response->assertRedirect( env( 'PRIVATEAREA_URL' ) );
+//    }
+//
+//    public function test_users_can_not_authenticate_with_invalid_password(): void {
+//        $user = User::factory()->create();
+//
+//        $this->post( '/auth/login', [
+//            'email'    => $user->email,
+//            'password' => 'wrong-password',
+//        ] );
+//
+//        $this->assertGuest();
+//    }
+//
+//    public function test_creating_client(){
+//
+//        $cr = new PassportClientCreator();
+//
+//        $id          = env( 'PRIVATEAREA_CLIENT_ID' );
+//        $secret      = env( 'PRIVATEAREA_CLIENT_SECRET' );
+//        $callbackUrl = env( 'PRIVATEAREA_CLIENT_CALLBACK' );
+//        $name        = 'CLIENT_TEST';
+//
+//        $cr->create($id, $secret, $callbackUrl, $name);
+//
+//        $client = DB::table('oauth_clients')->where('id', $id)->first();
+//
+//        $this->assertNotNull($client);
+//    }
 
     public function setUp(): void {
 

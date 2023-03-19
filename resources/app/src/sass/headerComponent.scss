@@ -1,0 +1,54 @@
+$primary: #FD7E14FF;
+$secondary: #495057FF;
+
+body{
+    background-color: #fafbfe;
+}
+
+.button-sidebar{
+    margin: auto 20px auto;
+    border: none;
+    background-color: $primary;
+}
+
+.navbar-show{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 80px;
+    width: 260px;
+    right: 0;
+    background-color: $secondary;
+}
+
+.header{
+    background-color: $primary;
+}
+
+.route-list li{
+    margin: 10px 5px 10px 5px;
+}
+
+ul li{
+    list-style-type: none;
+}
+
+ul li a{
+    text-decoration: none;
+    color: #afafaf;
+}
+
+ul li a:hover{
+    color: white;
+}
+
+ul li a:focus{
+    color: white;
+}
+
+.button-logout{
+    border: none;
+    width: 50%;
+    background-color: $secondary;
+    color: #afafaf;
+}

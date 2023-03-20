@@ -7,6 +7,31 @@
 QR-menu is Web App that allows Restaurant owners to create their own menù and share it with the public with a QR code.
 The project is based on laravel.
 
+## Setup the projects
+
+QR-menu is Web App based on ``Laravel`` and ``React framework``, so to run the project in the ``dev environment`` you must first install the dependencies of the project.
+
+```bash
+composer install
+npm install
+```
+
+
+Then after all the dependencies are installed you must build the UI parts:
+
+```bash
+npm run build
+npm run privatearea-build
+```
+
+If you need to work on ``privatearea`` you must run the command:
+
+```bash
+npm run build
+npm run privatearea-run
+```
+
+
 ## QR-menu is based on Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

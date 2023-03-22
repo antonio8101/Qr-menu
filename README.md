@@ -7,7 +7,7 @@
 QR-menu is Web App that allows Restaurant owners to create their own menù and share it with the public with a QR code.
 The project is based on laravel.
 
-## Setup the projects
+## Set up the projects
 
 QR-menu is Web App based on ``Laravel`` and ``React framework``, so to run the project in the ``dev environment`` you must first install the dependencies of the project.
 
@@ -16,8 +16,24 @@ composer install
 npm install
 ```
 
+Provide a valid configuration for the database into .env file just created.
 
-Then after all the dependencies are installed you must build the UI parts:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=qrmenudb
+DB_USERNAME=user
+DB_PASSWORD=password
+```
+
+Run the command :
+
+```bash
+php artisan qrmenu:init
+```
+
+Then finally all the dependencies are installed, and all initial steps are done. Then run the following commands:
 
 ```bash
 npm run build
@@ -30,7 +46,6 @@ If you need to work on ``privatearea`` you must run the command:
 npm run build
 npm run privatearea-run
 ```
-
 
 ## QR-menu is based on Laravel
 

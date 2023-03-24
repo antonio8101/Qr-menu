@@ -13,6 +13,9 @@ QR-menu is Web App based on ``Laravel`` and ``React framework``, so to run the p
 
 ```bash
 composer install
+```
+
+```bash
 npm install
 ```
 
@@ -33,10 +36,14 @@ Run the command :
 php artisan qrmenu:init
 ```
 
-Then finally all the dependencies are installed, and all initial steps are done. Then run the following commands:
+Then finally all the dependencies are installed, and all initial steps are done. 
+Now run the following commands:
 
 ```bash
 npm run privatearea-build
+```
+
+```bash
 npm run build
 ```
 

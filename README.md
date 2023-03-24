@@ -36,8 +36,14 @@ php artisan qrmenu:init
 Then finally all the dependencies are installed, and all initial steps are done. Then run the following commands:
 
 ```bash
-npm run build
 npm run privatearea-build
+npm run build
+```
+
+And then finally start the project:
+
+```bash
+php artisan serve
 ```
 
 If you need to work on ``privatearea`` you must run the command:
@@ -46,6 +52,7 @@ If you need to work on ``privatearea`` you must run the command:
 npm run build
 npm run privatearea-run
 ```
+
 
 ## QR-menu is based on Laravel
 

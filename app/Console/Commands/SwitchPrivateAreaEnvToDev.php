@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Command\Command as CommandAlias;
 
-class SwitchPrivateAreaEnvToDev extends Command {
+class SwitchPrivateAreaEnvToDev extends Command
+{
 
     use WorkWithEnvVars;
 
@@ -31,24 +32,24 @@ class SwitchPrivateAreaEnvToDev extends Command {
      *
      * @return int
      */
-    public function handle(): int {
-
-        $this->info( 'File .env for React app exists' );
+    public function handle(): int
+    {
+        $this->info('File .env for React app exists');
 
         $this->loadPrivateAreaEnvVars();
 
-        $this->info( "Client $this->react_app_client_id created and/or updated" );
+        $this->info("Client $this->react_app_client_id created and/or updated");
 
         // Always on localhost for development
         $host = "http://localhost:$this->react_app_client_port";
 
         $client_id = $this->react_app_client_id ?? Str::uuid();
 
-        $client_secret =  $this->react_app_client_secret ?? "4GyQ6EZs9UMSssjiqaVQZS9WH5Cud3CNnp6GeZIe"; // todo: generate
+        $client_secret =  strlen($this->react_app_client_secret) > 0 ? $this->react_app_client_secret : md5(Str::random(40));
 
-        $this->setPrivateAreaEnvVars( $host, $client_id, $client_secret, '' );
+        $this->setPrivateAreaEnvVars($host, $client_id, $client_secret, '');
 
-        Artisan::call( 'qrmenu:set_client' );
+        Artisan::call('qrmenu:set_client');
 
         return CommandAlias::SUCCESS;
     }

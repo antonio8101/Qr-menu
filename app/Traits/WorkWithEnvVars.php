@@ -10,7 +10,6 @@ trait WorkWithEnvVars {
     private string|null $react_app_client_id;
     private string|null $react_app_client_secret;
     private string|null $react_app_client_host;
-    private string|null $laravel_app_host;
     private string|null $react_app_callback;
     private int $react_app_client_port;
 
@@ -31,8 +30,6 @@ trait WorkWithEnvVars {
         $this->react_app_sub_folder    = env( 'REACT_APP_SUBFOLDER_NAME' );
         $this->react_app_client_id     = env( 'REACT_APP_CLIENT_ID' );
         $this->react_app_client_secret = env( 'REACT_APP_CLIENT_SECRET' );
-
-        $this->laravel_app_host        = env( 'REACT_APP_URL' );
 
         $this->react_app_callback      = $this->react_app_client_host;
     }

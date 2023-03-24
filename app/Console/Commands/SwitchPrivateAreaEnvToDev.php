@@ -49,7 +49,7 @@ class SwitchPrivateAreaEnvToDev extends Command
 
         $this->setPrivateAreaEnvVars($host, $client_id, $client_secret, '');
 
-        Artisan::call('qrmenu:set_client');
+        Artisan::call('qrmenu:set_client', ['env' => 'dev']);
 
         return CommandAlias::SUCCESS;
     }

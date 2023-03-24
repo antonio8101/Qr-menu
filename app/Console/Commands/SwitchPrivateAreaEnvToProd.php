@@ -55,7 +55,7 @@ class SwitchPrivateAreaEnvToProd extends Command {
 
         $this->setPrivateAreaEnvVars( $host, $client_id, $client_secret, $subFolder );
 
-        Artisan::call( 'qrmenu:set_client' );
+        Artisan::call( 'qrmenu:set_client', ['env' => 'prod'] );
 
         return CommandAlias::SUCCESS;
     }

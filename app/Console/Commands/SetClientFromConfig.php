@@ -23,7 +23,7 @@ class SetClientFromConfig extends Command {
      *
      * @var string
      */
-    protected $signature = 'qrmenu:set_client';
+    protected $signature = 'qrmenu:set_client {env}';
 
     /**
      * The console command description.
@@ -45,7 +45,7 @@ class SetClientFromConfig extends Command {
 
             $this->info( 'File .env for React app exists' );
 
-            $privatearea_url = ($this->react_app_client_host == $this->laravel_app_host) ? $this->react_app_sub_folder : $this->react_app_client_host;
+            $privatearea_url = $this->setPrivateAreaUrl();
 
             $react_app_callback = $this->react_app_client_host;
 
@@ -68,5 +68,14 @@ class SetClientFromConfig extends Command {
         }
 
         return CommandAlias::SUCCESS;
+    }
+
+    private function setPrivateAreaUrl(): string | null {
+
+        $defaultEnv = 'dev';
+        $envArg = $this->argument('env');
+        $env = strlen($envArg) > 0 ? $envArg : $defaultEnv;
+
+        return $env == $defaultEnv ? $this->react_app_client_host : $this->react_app_sub_folder;
     }
 }

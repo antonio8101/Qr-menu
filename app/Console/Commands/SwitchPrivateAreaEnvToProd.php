@@ -42,6 +42,11 @@ class SwitchPrivateAreaEnvToProd extends Command {
         $subFolder = 'app';
 
         $host = env( 'app_url' );
+        $port = env('server_port');
+
+        if ($port != 80 &&  $port !== 433){
+            $host .= ":$port";
+        }
 
         $client_id = strlen($this->react_app_client_id) > 0 ? $this->react_app_client_id : Str::uuid();
 

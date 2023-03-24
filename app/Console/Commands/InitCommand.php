@@ -36,6 +36,8 @@ class InitCommand extends Command
 
         $isCreated = $this->createDatabase( env('db_host'), env('db_username'), env('db_password'), env('db_database') );
 
+        Artisan::call( 'migrate' );
+
         if (!$isCreated)
             return CommandAlias::FAILURE;
 

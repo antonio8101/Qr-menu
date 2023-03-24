@@ -46,10 +46,9 @@ And then finally start the project:
 php artisan serve
 ```
 
-If you need to work on ``privatearea`` you must run the command:
+If you then need to work on ``privatearea`` you must run the command:
 
 ```bash
-npm run build
 npm run privatearea-run
 ```
 

@@ -11,7 +11,8 @@
         "laravel/passport": "^11.8",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "ext-pdo": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -4,7 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\DB;
+use PDO;
+use PDOException;
 use Symfony\Component\Console\Command\Command as CommandAlias;
 
 class InitCommand extends Command
@@ -32,10 +33,35 @@ class InitCommand extends Command
 
         Artisan::call( 'key:generate' );
         Artisan::call( 'passport:keys', ['--force' => true] );
-        exec('chmod -R 777 storage bootstrap/cache');
-        DB::statement("CREATE DATABASE IF NOT EXISTS " . env('DB_DATABASE') );
-        Artisan::call('migrate', ['--no-interaction'=> true]);
+
+        $isCreated = $this->createDatabase( env('db_host'), env('db_username'), env('db_password'), env('db_database') );
+
+        if (!$isCreated)
+            return CommandAlias::FAILURE;
+
+        $this->info("Init command executed successfully");
 
         return CommandAlias::SUCCESS;
+    }
+
+    private function createDatabase(string $host, string $user, string $password, string $dbName):bool{
+
+        try {
+
+            $pdo = new PDO("mysql:host={$host}", $user, $password);
+
+            $pdo->exec("DROP DATABASE IF EXISTS {$dbName}" );
+            $pdo->exec("CREATE DATABASE {$dbName}" );
+
+            return true;
+
+        } catch (PDOException $exception){
+
+            $this->error($exception->getMessage());
+
+            return false;
+
+        }
+
     }
 }

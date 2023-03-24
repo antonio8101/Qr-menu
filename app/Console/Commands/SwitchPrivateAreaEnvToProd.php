@@ -50,7 +50,8 @@ class SwitchPrivateAreaEnvToProd extends Command {
 
         $client_id = strlen($this->react_app_client_id) > 0 ? $this->react_app_client_id : Str::uuid();
 
-        $client_secret = strlen($this->react_app_client_secret) > 0 ? $this->react_app_client_secret : "4GyQ6EZs9UMSssjiqaVQZS9WH5Cud3CNnp6GeZIe"; // todo: generate
+        $client_secret = strlen($this->react_app_client_secret) > 0 ? $this->react_app_client_secret :
+            md5(Str::random(40));
 
         $this->setPrivateAreaEnvVars( $host, $client_id, $client_secret, $subFolder );
 

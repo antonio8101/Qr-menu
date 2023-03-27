@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use Dotenv\Dotenv;
+use Dotenv\Exception\InvalidPathException;
 
 trait WorkWithEnvVars {
 
@@ -18,20 +19,26 @@ trait WorkWithEnvVars {
      * It is not necessary to the same with the laravel env vars, because they are already loaded
      * from the framework.
      *
-     * @return void
+     * @return bool
      */
-    function loadPrivateAreaEnvVars(): void {
+    function loadPrivateAreaEnvVars(): bool {
 
-        $dotenv = Dotenv::createMutable( 'resources\app' );
-        $dotenv->load();
+        try {
+            $dotenv = Dotenv::createMutable( 'resources\app' );
+            $dotenv->load();
 
-        $this->react_app_client_port   = env('PORT', 3000);
-        $this->react_app_client_host   = env( 'REACT_APP_HOST' );
-        $this->react_app_sub_folder    = env( 'REACT_APP_SUBFOLDER_NAME' );
-        $this->react_app_client_id     = env( 'REACT_APP_CLIENT_ID' );
-        $this->react_app_client_secret = env( 'REACT_APP_CLIENT_SECRET' );
+            $this->react_app_client_port   = env('PORT', 3000);
+            $this->react_app_client_host   = env( 'REACT_APP_HOST' );
+            $this->react_app_sub_folder    = env( 'REACT_APP_SUBFOLDER_NAME' );
+            $this->react_app_client_id     = env( 'REACT_APP_CLIENT_ID' );
+            $this->react_app_client_secret = env( 'REACT_APP_CLIENT_SECRET' );
 
-        $this->react_app_callback      = $this->react_app_client_host;
+            $this->react_app_callback      = $this->react_app_client_host;
+
+            return true;
+        } catch (InvalidPathException){
+            return false;
+        }
     }
 
     private function setPrivateAreaEnvVars($host, $client_id, $client_secret, $subFolder ): void {

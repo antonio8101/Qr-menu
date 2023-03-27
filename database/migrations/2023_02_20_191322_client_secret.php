@@ -20,9 +20,9 @@ return new class extends Migration {
         } );
 
         DB::table( 'client_info' )->insert([
-                'client_id'     => env( 'REACT_APP_CLIENT_ID' ),
-                'client_secret' => env( 'REACT_APP_CLIENT_SECRET' ),
-                'url_callback'  => env( 'REACT_APP_CLIENT_CALLBACK' )
+                'client_id'     => env( 'PRIVATEAREA_CLIENT_ID' ),
+                'client_secret' => env( 'PRIVATEAREA_CLIENT_SECRET' ),
+                'url_callback'  => env( 'PRIVATEAREA_CLIENT_CALLBACK' )
         ]);
     }
 

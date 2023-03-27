@@ -10,7 +10,9 @@
         "laravel/framework": "^9.19",
         "laravel/passport": "^11.8",
         "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7"
+        "laravel/tinker": "^2.7",
+        "vlucas/phpdotenv": "^5.5",
+        "ext-pdo": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -45,7 +47,7 @@
         ],
         "pre-install-cmd": [
             "@php -r \"file_exists('.env') || copy('.env.base', '.env');\"",
-            "@php -r \"file_exists('/resources/app/.env') || copy('/resources/app/.env.base', '/resources/app/.env');\""
+            "@php -r \"file_exists('resources/app/.env') || copy('resources/app/.env.base', 'resources/app/.env');\""
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"

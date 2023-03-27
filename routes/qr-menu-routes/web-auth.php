@@ -80,8 +80,8 @@ Route::get('/login', function (Request $request) {
     $request->session()->put('state', $state = Str::random(40));
 
     $query = http_build_query([
-        'client_id' => env('REACT_APP_CLIENT_ID'),
-        'redirect_uri' => env('REACT_APP_CLIENT_CALLBACK'),
+        'client_id' => env('PRIVATEAREA_CLIENT_ID'),
+        'redirect_uri' => env('PRIVATEAREA_CLIENT_CALLBACK'),
         'response_type' => 'code',
         'scope' => '',
         'state' => $state,

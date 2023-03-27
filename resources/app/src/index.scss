@@ -1,8 +1,12 @@
-$primary: #FD7E14FF;
-$secondary: #495057FF;
+@import 'sass/color.scss';
 
 body{
     background-color: #fafbfe;
+}
+
+.section{
+    background-color: #ffffff;
+    color: #494949;
 }
 
 .button-sidebar{

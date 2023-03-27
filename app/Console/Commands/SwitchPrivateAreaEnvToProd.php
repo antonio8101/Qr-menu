@@ -35,6 +35,13 @@ class SwitchPrivateAreaEnvToProd extends Command {
 
         $this->info( 'File .env for React app exists' );
 
+        if ( ! file_exists( 'resources/app/.env' ) ) {
+
+            $this->warn('skipped');
+
+            return CommandAlias::SUCCESS;
+        }
+
         $this->loadPrivateAreaEnvVars();
 
         $this->info( "Client $this->react_app_client_id created and/or updated" );

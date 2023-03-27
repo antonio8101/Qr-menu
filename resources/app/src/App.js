@@ -5,10 +5,8 @@ import {APP_SUBFOLDER, LOGIN_URL, LOGOUT_URL} from "./consts";
 import {useStoredUser} from "./hooks/useStoredUser";
 import {useLogin} from "./hooks/useLogin";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {HeaderComponent} from "./Private-area-components/HeaderComponent";
-import {SectionComponent} from "./Private-area-components/SectionComponent";
-import './sass/headerComponent.scss';
-import './sass/sectionComponent.scss';
+import {Header} from "./components/Header";
+import {Section} from "./components/Section";
 
 const baseURL = APP_SUBFOLDER + '/';
 
@@ -20,7 +18,7 @@ export function App() {
             <BrowserRouter>
                 <Suspense fallback={<Loading/>}>
                     <EnsureLoggedIn>
-                        <HeaderComponent/>
+                        <Header/>
                         <Routes>
                             <Route exact path={`${baseURL}`} element={<Dashboard/>}></Route>
                             <Route exact path={`${baseURL}profile`} element={<Profile/>}/>
@@ -108,7 +106,7 @@ export function Dashboard() {
     return (
         <>
             <h1 className="mx-sm-2 mx-md-4"> Bentornato {user.name} </h1>
-            <SectionComponent/>
+            <Section/>
         </>
     )
 }

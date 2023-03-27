@@ -26,6 +26,23 @@ class PassportClientCreator implements PassportClientCreatorContract {
         $this->internalCreate( $id, $secret, $callbackUrl, $name );
     }
 
+    public function upsert( string $id, string $secret, string $callbackUrl, ?string $name = null ): void {
+
+        DB::table(self::TABLE_NAME)->upsert(
+            [
+                'id'                     => $id,
+                'secret'                 => $secret,
+                'redirect'               => $callbackUrl,
+                'name'                   => $name,
+                'personal_access_client' => 0,
+                'password_client'        => 0,
+                'revoked'                => 0,
+                'created_at'             => date( 'c' ),
+                'updated_at'             => date( 'c' )
+            ],
+            ['id']);
+    }
+
     private function internalCreate( string $id, string $secret, string $callbackUrl, ?string $name ): void {
         DB::table( self::TABLE_NAME )
           ->insert( [

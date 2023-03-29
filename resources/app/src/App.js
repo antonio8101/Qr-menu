@@ -4,6 +4,9 @@ import {useGetQueryParams} from "./hooks/useGetQueryParams";
 import {APP_SUBFOLDER, LOGIN_URL, LOGOUT_URL} from "./consts";
 import {useStoredUser} from "./hooks/useStoredUser";
 import {useLogin} from "./hooks/useLogin";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Header} from "./components/Header";
+import {Section} from "./components/Section";
 
 const baseURL = APP_SUBFOLDER + '/';
 
@@ -15,13 +18,12 @@ export function App() {
             <BrowserRouter>
                 <Suspense fallback={<Loading/>}>
                     <EnsureLoggedIn>
-                        <Menu/>
+                        <Header/>
                         <Routes>
                             <Route exact path={`${baseURL}`} element={<Dashboard/>}></Route>
                             <Route exact path={`${baseURL}profile`} element={<Profile/>}/>
                             <Route exact path={"*"} element={<div>NOT-FOUND</div>}></Route>
                         </Routes>
-                        <ButtonLogout/>
                     </EnsureLoggedIn>
                 </Suspense>
             </BrowserRouter>
@@ -34,9 +36,19 @@ export function Loading() {
 }
 export function Menu() {
     return (<nav>
-        <ul>
-            <li><Link to={`${baseURL}`}>HOME</Link></li>
-            <li><Link to={`${baseURL}profile`}>PROFILE</Link></li>
+        <ul className="route-list">
+            <li><Link to={`${baseURL}`}>My Menus</Link></li>
+            <li><Link to={`${baseURL}profile`}>My Business</Link></li>
+            <li><Link to={`${baseURL}configuration`}>Configuration</Link></li>
+            <li><Link to={`${baseURL}qrcode`}>Qr Code</Link></li>
+            <li><Link to={`${baseURL}print`}>Print</Link></li>
+            <li><Link to={`${baseURL}share`}>Share Menù</Link></li>
+            <li><Link to={`${baseURL}plan`}>My plan</Link></li>
+            <li><Link to={`${baseURL}invoices`}>Invoices</Link></li>
+            <li><Link to={`${baseURL}statistics`}>Statistics</Link></li>
+            <li><Link to={`${baseURL}support`}>Request Support</Link></li>
+            <li><Link to={`${baseURL}myaccount`}>My account</Link></li>
+            <li><Link to={`${baseURL}changepassword`}>Change Password</Link></li>
         </ul>
     </nav>);
 }
@@ -93,10 +105,12 @@ export function Dashboard() {
 
     return (
         <>
-            <h1> DASHBOARD, Ciao {user.name} </h1>
+            <h1 className="mx-sm-2 mx-md-4"> Bentornato {user.name} </h1>
+            <Section/>
         </>
     )
 }
+
 export function Profile() {
     return (
         <>
@@ -111,5 +125,5 @@ export function ButtonLogout() {
     return (<button onClick={() => {
         removeUser();
         window.location = LOGOUT_URL;
-    }}>LOGOUT</button>)
+    }} className="button-logout">LOGOUT</button>)
 }

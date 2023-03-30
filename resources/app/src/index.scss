@@ -1,56 +1,61 @@
-@import 'sass/color.scss';
+@import "sass/color.scss";
 
-body{
+body {
     background-color: #fafbfe;
 }
 
-.section{
+.section {
     background-color: #ffffff;
     color: #494949;
 }
 
-.button-sidebar{
+.button-sidebar {
     margin: auto 20px auto;
     border: none;
     background-color: $primary;
 }
 
-.navbar-show{
+.navbar-show {
     position: fixed;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     top: 80px;
-    width: 260px;
-    right: 0;
-    background-color: $secondary;
-}
-
-.header{
+    width: 100%;
     background-color: $primary;
 }
 
-.route-list li{
+.header {
+    background-color: $primary;
+}
+
+.route-list li {
     margin: 10px 5px 10px 5px;
+    padding: 0;
 }
 
-ul li{
-    list-style-type: none;
+ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: circle;
 }
 
-ul li a{
+ul li a {
     text-decoration: none;
-    color: #afafaf;
+    color: $secondary;
 }
 
-ul li a:hover{
+ul li a:hover {
     color: white;
 }
 
-ul li a:focus{
+ul li a:focus {
     color: white;
 }
 
-.button-logout{
+.button-logout {
     border: none;
     width: 50%;
     background-color: $secondary;

@@ -13,7 +13,7 @@ import { useLogin } from "./hooks/useLogin";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Header } from "./components/Header";
 import { Section } from "./components/Section";
-
+import { AppProvider, useGlobalContext } from "./context";
 const baseURL = APP_SUBFOLDER + "/";
 
 console.log(baseURL);
@@ -21,30 +21,32 @@ console.log(baseURL);
 export function App() {
     return (
         <>
-            <BrowserRouter>
-                <Suspense fallback={<Loading />}>
-                    <EnsureLoggedIn>
-                        <Header />
-                        <Routes>
-                            <Route
-                                exact
-                                path={`${baseURL}`}
-                                element={<Dashboard />}
-                            ></Route>
-                            <Route
-                                exact
-                                path={`${baseURL}profile`}
-                                element={<Profile />}
-                            />
-                            <Route
-                                exact
-                                path={"*"}
-                                element={<div>NOT-FOUND</div>}
-                            ></Route>
-                        </Routes>
-                    </EnsureLoggedIn>
-                </Suspense>
-            </BrowserRouter>
+            <AppProvider>
+                <BrowserRouter>
+                    <Suspense fallback={<Loading />}>
+                        <EnsureLoggedIn>
+                            <Header />
+                            <Routes>
+                                <Route
+                                    exact
+                                    path={`${baseURL}`}
+                                    element={<Dashboard />}
+                                ></Route>
+                                <Route
+                                    exact
+                                    path={`${baseURL}profile`}
+                                    element={<Profile />}
+                                />
+                                <Route
+                                    exact
+                                    path={"*"}
+                                    element={<div>NOT-FOUND</div>}
+                                ></Route>
+                            </Routes>
+                        </EnsureLoggedIn>
+                    </Suspense>
+                </BrowserRouter>
+            </AppProvider>
         </>
     );
 }
@@ -53,25 +55,48 @@ export function Loading() {
     return <>LOADING EFFECT...</>;
 }
 export function Menu() {
+    const { show, setShow } = useGlobalContext();
     return (
         <nav>
             <ul className="route-list p-0">
                 <li>
-                    <Link to={`${baseURL}`}>My Menus</Link>
+                    <Link to={`${baseURL}`} onClick={() => setShow(false)}>
+                        My Menus
+                    </Link>
                 </li>
                 <li>
-                    <Link to={`${baseURL}profile`}>My Business</Link>
+                    <Link
+                        to={`${baseURL}profile`}
+                        onClick={() => setShow(false)}
+                    >
+                        My Business
+                    </Link>
                 </li>
 
                 <li>
-                    <Link to={`${baseURL}invoices`}>Invoices</Link>
+                    <Link
+                        to={`${baseURL}invoices`}
+                        onClick={() => setShow(false)}
+                    >
+                        Invoices
+                    </Link>
                 </li>
 
                 <li>
-                    <Link to={`${baseURL}myaccount`}>My account</Link>
+                    <Link
+                        to={`${baseURL}myaccount`}
+                        onClick={() => setShow(false)}
+                    >
+                        My account
+                    </Link>
                 </li>
                 <li>
-                    <Link to={`${baseURL}changepassword`}>Change Password</Link>
+                    <Link
+                        to={`${baseURL}changepassword`}
+                        onClick={() => setShow(false)}
+                    >
+                        Change Password
+                    </Link>
                 </li>
             </ul>
         </nav>

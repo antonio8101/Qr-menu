@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import { ButtonLogout, Menu } from "../App";
 import styled from "styled-components";
 
 export function Sidebar() {
-    const [ show, setShow ] = useState(false);
+    const [show, setShow] = useState(false);
 
     return (
         <>
@@ -15,7 +15,7 @@ export function Sidebar() {
             </MenuButtonContainer>
             {show && (
                 <div className="navbar-show h-100 ">
-                    <Menu />
+                    <Menu setShow={setShow} />
                     <ButtonLogout />
                 </div>
             )}
@@ -24,7 +24,6 @@ export function Sidebar() {
 }
 
 const MenuButtonContainer = styled.div`
-
     width: var(--menu-button-continaer-size);
     height: var(--menu-button-continaer-size);
     background-color: transparent;

@@ -13,7 +13,7 @@ import { useLogin } from "./hooks/useLogin";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Header } from "./components/Header";
 import { Section } from "./components/Section";
-import { AppProvider, useGlobalContext } from "./context";
+
 const baseURL = APP_SUBFOLDER + "/";
 
 console.log(baseURL);
@@ -21,32 +21,30 @@ console.log(baseURL);
 export function App() {
     return (
         <>
-            <AppProvider>
-                <BrowserRouter>
-                    <Suspense fallback={<Loading />}>
-                        <EnsureLoggedIn>
-                            <Header />
-                            <Routes>
-                                <Route
-                                    exact
-                                    path={`${baseURL}`}
-                                    element={<Dashboard />}
-                                ></Route>
-                                <Route
-                                    exact
-                                    path={`${baseURL}profile`}
-                                    element={<Profile />}
-                                />
-                                <Route
-                                    exact
-                                    path={"*"}
-                                    element={<div>NOT-FOUND</div>}
-                                ></Route>
-                            </Routes>
-                        </EnsureLoggedIn>
-                    </Suspense>
-                </BrowserRouter>
-            </AppProvider>
+            <BrowserRouter>
+                <Suspense fallback={<Loading />}>
+                    <EnsureLoggedIn>
+                        <Header />
+                        <Routes>
+                            <Route
+                                exact
+                                path={`${baseURL}`}
+                                element={<Dashboard />}
+                            ></Route>
+                            <Route
+                                exact
+                                path={`${baseURL}profile`}
+                                element={<Profile />}
+                            />
+                            <Route
+                                exact
+                                path={"*"}
+                                element={<div>NOT-FOUND</div>}
+                            ></Route>
+                        </Routes>
+                    </EnsureLoggedIn>
+                </Suspense>
+            </BrowserRouter>
         </>
     );
 }
@@ -54,8 +52,7 @@ export function App() {
 export function Loading() {
     return <>LOADING EFFECT...</>;
 }
-export function Menu() {
-    const { setShow } = useGlobalContext();
+export function Menu({ setShow }) {
     return (
         <nav>
             <ul className="route-list p-0">

@@ -55,7 +55,7 @@ export function Loading() {
     return <>LOADING EFFECT...</>;
 }
 export function Menu() {
-    const { show, setShow } = useGlobalContext();
+    const { setShow } = useGlobalContext();
     return (
         <nav>
             <ul className="route-list p-0">

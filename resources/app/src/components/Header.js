@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import logo from "../assets/qr-menu-logo.svg";
 import React from 'react';
 import {Sidebar} from "./Sidebar";
+import {Logo} from "./Logo";
 
 export function Header() {
     return (
         <>
             <ContainerHeader className="header w-100">
-                <Logo src={logo} alt="logo" className="logo"></Logo>
+                <Logo />
                 <Sidebar/>
             </ContainerHeader>
         </>
@@ -18,11 +18,9 @@ const ContainerHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: start;
-`;
 
-const Logo = styled.img`
-    margin-left: 20px;
-    display: flex;
-    width:80px;
-    height: 80px;
+    img {
+        max-height: var(--header-logo-height);
+        padding: 0.5em;
+    }
 `;

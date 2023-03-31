@@ -3,7 +3,8 @@ import { Icon } from "@iconify/react";
 import { ButtonLogout, Menu } from "../App";
 import { useGlobalContext } from "../context";
 export function Sidebar() {
-    const { show, setShow } = useGlobalContext();
+    const [ show, setShow ] = useState(false);
+
     return (
         <>
             <button onClick={() => setShow(!show)} className="button-sidebar">

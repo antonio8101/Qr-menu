@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
-import { ButtonLogout, Menu } from "../App";
 import styled from "styled-components";
+import {Menu} from "./Menu";
+import {ButtonLogout} from "./ButtonLogout";
 
 export function Sidebar() {
     const [show, setShow] = useState(false);

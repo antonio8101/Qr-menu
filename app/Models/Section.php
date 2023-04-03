@@ -36,4 +36,10 @@ class Section extends Model
         Section::UPDATED_AT,
         Section::DELETED_AT
     ];
+
+    public function menu(): BelongsTo
+    {
+        return $this->belongsTo(Menu::class,Menu::ID,self::MENU_ID);
+    }
+    
 }

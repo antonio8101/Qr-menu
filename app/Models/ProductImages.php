@@ -17,7 +17,6 @@ class ProductImages extends Model
     public $timestamps = false;
 
     protected $hidden = [
-
         ProductImages::URI,
         ProductImages::ORDER,
     ];

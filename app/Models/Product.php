@@ -25,7 +25,6 @@ class Product extends Model
     protected $fillable = [
         Product::NAME,
         Product::DESCRIPTION,
-
     ];
 
     protected $hidden = [

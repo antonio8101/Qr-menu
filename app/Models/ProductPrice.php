@@ -24,7 +24,6 @@ class ProductPrice extends Model
     ];
 
     protected $hidden = [
-
         ProductPrice::VISIBLE,
         ProductPrice::FORMAT
     ];

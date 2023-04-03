@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('section', function (Blueprint $table){
             $table->integer('id')->primary()->unique();
-            
             $table->integer('menu_id');
             $table->string('name');
             $table->integer('order');

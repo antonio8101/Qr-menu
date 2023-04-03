@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('menu', function (Blueprint $table){
             $table->integer('id')->primary()->unique();
+
             $table->string('name');
             $table->integer('order');
             $table->boolean('visible');

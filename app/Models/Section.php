@@ -30,6 +30,7 @@ class Section extends Model
     ];
 
     protected $hidden = [
+
         Section::ORDER,
         Section::VISIBLE,
         Section::CREATED_AT,
@@ -41,5 +42,5 @@ class Section extends Model
     {
         return $this->belongsTo(Menu::class,Menu::ID,self::MENU_ID);
     }
-    
+
 }

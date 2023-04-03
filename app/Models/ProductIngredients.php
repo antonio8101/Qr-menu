@@ -16,6 +16,7 @@ class ProductIngredients extends Model
     public $timestamps = false;
 
     protected $fillable = [
+
         ProductIngredients::NAME
     ];
 }

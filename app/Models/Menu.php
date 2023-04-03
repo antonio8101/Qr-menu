@@ -27,6 +27,7 @@ class Menu extends Model
 
     protected $fillable = [
         Menu::NAME
+
     ];
 
     protected $hidden = [

@@ -16,6 +16,7 @@ class ProductAllergenes extends Model
     public $timestamps = false;
 
     protected $fillable = [
+
         ProductAllergenes::NAME
     ];
 

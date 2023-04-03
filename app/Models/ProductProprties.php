@@ -18,6 +18,7 @@ class ProductProprties extends Model
     public $timestamps = false;
 
     protected $visible = [
+
         ProductProprties::NAME,
         ProductProprties::IMAGES
     ];

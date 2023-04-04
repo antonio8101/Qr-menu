@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Section extends Model
 {
     use HasFactory;
 
-    const ID = 'id';
+    const ID = 'section_id';
     const NAME = 'name';
     const ORDER = 'order';
     const VISIBLE = 'visible';
-    const MENU_ID = 'menu_id';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
@@ -39,7 +39,11 @@ class Section extends Model
 
     public function menu(): BelongsTo
     {
-        return $this->belongsTo(Menu::class,Menu::ID,self::MENU_ID);
+        return $this->belongsTo(Menu::class,Menu::ID,self::ID);
     }
 
+    public function product(): BelongsToMany
+    {
+        return $this->belongsToMany(Section::class, 'product_section', 'product_id', 'section_id');
+    }
 }

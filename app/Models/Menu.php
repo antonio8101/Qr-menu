@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-
 class Menu extends Model
 {
     use HasFactory;
@@ -40,6 +39,6 @@ class Menu extends Model
 
     public function section(): HasMany
     {
-        return $this->hasMany(Section::class, Section::MENU_ID, self::ID);
+        return $this->hasMany(Section::class, Section::ID, self::ID);
     }
 }

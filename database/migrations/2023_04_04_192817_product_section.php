@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menu', function (Blueprint $table){
-            $table->id();
-            $table->string('name');
-            $table->integer('order');
-            $table->boolean('visible');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+        Schema::create('product_section', function (Blueprint $table){
+            $table->integer('product_id');
+            $table->integer('section_id');
+            $table->timestamp('updated_at');
         });
-
     }
 
     /**
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menu');
+        Schema::dropIfExists('product_section');
     }
 };

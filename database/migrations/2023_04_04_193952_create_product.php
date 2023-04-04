@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menu', function (Blueprint $table){
+        Schema::create('product', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('order');
-            $table->boolean('visible');
+            $table->string('description');
+            $table->string('featured')->nullable();
+            $table->string('starred')->nullable();
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
         });
-
     }
 
     /**
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menu');
+        Schema::dropIfExists('product');
     }
 };

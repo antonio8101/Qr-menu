@@ -11,11 +11,10 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('section', function (Blueprint $table){
-            $table->integer('id')->primary()->unique();
-            $table->integer('menu_id');
+            $table->id();
             $table->string('name');
             $table->integer('order');
             $table->boolean('visible');
@@ -30,7 +29,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('section');
     }

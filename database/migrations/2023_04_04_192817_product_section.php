@@ -14,9 +14,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('product_section', function (Blueprint $table){
-            $table->integer('product_id');
-            $table->integer('section_id');
-            $table->timestamp('updated_at');
+            $table->id();
+            $table->foreignId('product_id')->constrained();
+            $table->foreignId('section_id')->constrained();
         });
     }
 

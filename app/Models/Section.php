@@ -11,7 +11,8 @@ class Section extends Model
 {
     use HasFactory;
 
-    const ID = 'section_id';
+    const ID = 'id';
+    const MENU_ID = 'menu_id';
     const NAME = 'name';
     const ORDER = 'order';
     const VISIBLE = 'visible';
@@ -34,16 +35,17 @@ class Section extends Model
         Section::VISIBLE,
         Section::CREATED_AT,
         Section::UPDATED_AT,
-        Section::DELETED_AT
+        Section::DELETED_AT,
+        Section::MENU_ID
     ];
 
     public function menu(): BelongsTo
     {
-        return $this->belongsTo(Menu::class,Menu::ID,self::ID);
+        return $this->belongsTo(Menu::class);
     }
 
     public function product(): BelongsToMany
     {
-        return $this->belongsToMany(Section::class, 'product_section', 'product_id', 'section_id');
+        return $this->belongsToMany(Section::class);
     }
 }

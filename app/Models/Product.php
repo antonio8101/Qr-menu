@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    const ID = 'product_id';
+    const ID = 'id';
     const NAME = 'name';
     const DESCRIPTION = 'description';
     const FEATURED = 'featured';
@@ -38,6 +38,6 @@ class Product extends Model
     ];
 
    public function section(){
-       return $this->belongsToMany(Product::class, 'product_section','section_id', 'product_id');
+       return $this->belongsToMany(Product::class);
    }
 }

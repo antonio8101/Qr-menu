@@ -25,7 +25,9 @@ class Menu extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        Menu::NAME
+        Menu::NAME,
+        Menu::ORDER,
+        Menu::VISIBLE,
     ];
 
     protected $hidden = [
@@ -39,6 +41,6 @@ class Menu extends Model
 
     public function section(): HasMany
     {
-        return $this->hasMany(Section::class, Section::ID, self::ID);
+        return $this->hasMany(Section::class);
     }
 }

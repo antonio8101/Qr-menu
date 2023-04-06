@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('product_section', function (Blueprint $table){
             $table->id();
-            $table->foreignId('product_id')->constrained();
-            $table->foreignId('section_id')->constrained();
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('section_id');
+            $table->foreign('product_id')->references('id')->on('product');
+            $table->foreign('section_id')->references('id')->on('section');
         });
     }
 

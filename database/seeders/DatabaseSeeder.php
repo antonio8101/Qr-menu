@@ -6,7 +6,11 @@ namespace Database\Seeders;
 use App\Models\Menu;
 use App\Models\Product;
 use App\Models\Section;
+use App\Models\User;
+
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,16 +21,54 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       // \App\Models\User::factory(1)->create()//;
+        $userUuid = fake()->uuid();
+        $userName = fake()->name();
+        $userEmail = fake()->unique()->safeEmail();
+        $timeStamp = now();
+        $userPassword = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
+        $rememberToken = Str::random(10);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        Menu::factory(1)->create();
+        User::factory()->create([
 
-        Section::factory(1)->create();
+            'id' => $userUuid,
+            'name' => $userName,
+            'email' => $userEmail,
+            'email_verified_at' => $timeStamp,
+            'password' => $userPassword,
+            'remember_token' => $rememberToken,
+        ]);
 
-        Product::factory(1)->create();
+        $menuId = 1;
+        Menu::factory()->create([
+            'menu_id'=> $menuId,
+            'user_id'=> $userUuid,
+            'name_menu'=> 'mezzogiorno',
+            'order' => 1,
+            'visible'=> true,
+            'created_at'=> now()
+        ]);
+
+        $sectionId = 1;
+        Section::factory(1)->create([
+            'section_id'=> $sectionId,
+            'menu_id'=> $menuId,
+            'name_section'=> 'primi',
+            'order'=> 1,
+            'visible'=>true,
+            'created_at'=> now()
+        ]);
+
+        $productId = 1;
+        Product::factory(1)->create([
+            'product_id'=> $productId,
+            'name_dish'=> 'pasta al pomodoro',
+            'description'=>Str::random(20),
+            'created_at'=>now()
+        ]);
+
+        DB::table('product_section')->insert([
+            'product_id'=>$productId,
+            'section_id'=>$sectionId
+        ]);
     }
 }

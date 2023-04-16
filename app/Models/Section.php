@@ -11,9 +11,9 @@ class Section extends Model
 {
     use HasFactory;
 
-    const ID = 'id';
+    const ID = 'section_id';
     const MENU_ID = 'menu_id';
-    const NAME = 'name';
+    const NAME = 'name_section';
     const ORDER = 'order';
     const VISIBLE = 'visible';
     const CREATED_AT = 'created_at';
@@ -22,12 +22,15 @@ class Section extends Model
 
     protected $primaryKey = Section::ID;
 
-    protected $table = 'section';
+    protected $table = 'sections';
 
     public $timestamps = false;
 
     protected $fillable = [
         Section::NAME
+    ];
+    protected $visible = [
+      Section::NAME
     ];
 
     protected $hidden = [
@@ -41,11 +44,10 @@ class Section extends Model
 
     public function menu(): BelongsTo
     {
-        return $this->belongsTo(Menu::class);
+        return $this->belongsTo(Menu::class,Section::MENU_ID,Menu::ID);
     }
 
-    public function product(): BelongsToMany
-    {
-        return $this->belongsToMany(Section::class);
+    public function product(){
+        return $this->belongsToMany(Product::class,'product_section','product_id', 'product_id');
     }
 }

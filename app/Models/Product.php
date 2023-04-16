@@ -9,8 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
-    const ID = 'id';
-    const NAME = 'name';
+    const ID = 'product_id';
+    const NAME = 'name_dish';
     const DESCRIPTION = 'description';
     const FEATURED = 'featured';
     const STARRED = 'starred';
@@ -20,13 +20,18 @@ class Product extends Model
 
     protected $primaryKey = Product::ID;
 
-    protected $table = 'product';
+    protected $table = 'products';
 
     public $timestamps = false;
 
     protected $fillable = [
         Product::NAME,
         Product::DESCRIPTION,
+    ];
+
+    protected $visible = [
+      Product::NAME,
+      Product::DESCRIPTION
     ];
 
     protected $hidden = [
@@ -38,6 +43,6 @@ class Product extends Model
     ];
 
    public function section(){
-       return $this->belongsToMany(Product::class);
+       return $this->belongsToMany(Section::class,'product_section','section_id', 'section_id');
    }
 }

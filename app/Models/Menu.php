@@ -10,8 +10,9 @@ class Menu extends Model
 {
     use HasFactory;
 
-    const ID = 'id';
-    const NAME = 'name';
+    const ID = 'menu_id';
+    const USER_ID = 'user_id';
+    const NAME = 'name_menu';
     const ORDER = 'order';
     const VISIBLE = 'visible';
     const CREATED_AT = 'created_at';
@@ -30,17 +31,26 @@ class Menu extends Model
         Menu::VISIBLE,
     ];
 
+    protected $visible = [
+        Menu::NAME
+    ];
+
     protected $hidden = [
         Menu::ID,
         Menu::ORDER,
         Menu::VISIBLE,
         Menu::CREATED_AT,
         Menu::UPDATED_AT,
-        Menu::DELETED_AT
+        Menu::DELETED_AT,
+        Menu::USER_ID
     ];
 
     public function section(): HasMany
     {
-        return $this->hasMany(Section::class);
+        return $this->hasMany(Section::class,Section::MENU_ID,Menu::ID);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class,Menu::USER_ID,User::ID);
     }
 }

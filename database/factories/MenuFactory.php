@@ -17,7 +17,7 @@ class MenuFactory extends Factory
     public function definition()
     {
         return [
-          'name'=> 'mezzogiorno',
+          'name_menu'=> 'mezzogiorno',
           'order' => 1,
           'visible'=> true,
           'created_at'=> now()

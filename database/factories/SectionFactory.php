@@ -18,7 +18,7 @@ class SectionFactory extends Factory
     public function definition()
     {
         return [
-            'name'=> 'primi',
+            'name_section'=> 'primi',
             'order'=> 1,
             'visible'=>true,
             'created_at'=> now()

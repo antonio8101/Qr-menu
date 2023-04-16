@@ -2,10 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ * @extends Factory<Product>
  */
 class ProductFactory extends Factory
 {
@@ -17,8 +20,8 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'name'=> 'pasta al pomodoro',
-            'description'=>fake()->slug(20, true),
+            'name_dish'=> 'pasta al pomodoro',
+            'description'=> Str::random(20),
             'created_at'=>now()
         ];
     }

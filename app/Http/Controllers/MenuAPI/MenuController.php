@@ -4,6 +4,7 @@ namespace App\Http\Controllers\MenuAPI;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
+use App\Models\User;
 use Database\Factories\MenuFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -13,7 +14,9 @@ class MenuController extends Controller
 
     public function index()
     {
-           return Menu::all();
+         return Menu::all();
+
+
     }
 
 

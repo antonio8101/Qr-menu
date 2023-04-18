@@ -5,6 +5,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -20,12 +21,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasUuids;
 
-
     const ID = 'id';
+
     /**
      * @return string
      */
-    public function newUniqueId()
+    public function newUniqueId(): string
     {
         return (string) Uuid::uuid4();
     }
@@ -33,11 +34,14 @@ class User extends Authenticatable
     /**
      * @return string[]
      */
-    public function uniqueIds()
+    public function uniqueIds(): array
     {
         return  ['id'];
     }
-
+    protected $primaryKey = User::ID;
+    /**
+     * @var string
+     */
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.
@@ -59,6 +63,9 @@ class User extends Authenticatable
         User::ID,
         'password',
         'remember_token',
+        'email_verified_at',
+        'created_at',
+        'updated_at'
     ];
 
     /**
@@ -69,7 +76,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function menu (){
-        return $this->hasMany(Menu::class, Menu::USER_ID, Menu::USER_ID);
+
+    /**
+     * @return HasMany
+     */
+    public function menu (): HasMany
+    {
+        return $this->hasMany(Menu::class);
     }
 }

@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\MenuAPI\Contracts\QrMenuCommandContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Menu extends Model
+class Menu extends Model implements QrMenuCommandContract
 {
     use HasFactory;
 
-    const ID = 'menu_id';
+    const ID = 'id';
     const USER_ID = 'user_id';
     const NAME = 'name_menu';
     const ORDER = 'order';
@@ -31,26 +33,42 @@ class Menu extends Model
         Menu::VISIBLE,
     ];
 
-    protected $visible = [
-        Menu::NAME
-    ];
+    /*protected $visible = [
+        Menu::NAME,
+    ];*/
 
-    protected $hidden = [
-        Menu::ID,
-        Menu::ORDER,
-        Menu::VISIBLE,
-        Menu::CREATED_AT,
-        Menu::UPDATED_AT,
-        Menu::DELETED_AT,
-        Menu::USER_ID
-    ];
+      protected $hidden = [
+            Menu::ID,
+            Menu::ORDER,
+            Menu::VISIBLE,
+            Menu::CREATED_AT,
+            Menu::UPDATED_AT,
+            Menu::DELETED_AT,
+            Menu::USER_ID
+        ];
 
     public function section(): HasMany
     {
-        return $this->hasMany(Section::class,Section::MENU_ID,Menu::ID);
+        return $this->hasMany(Section::class);
     }
 
-    public function user(){
-        return $this->belongsTo(User::class,Menu::USER_ID,User::ID);
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function create(): void
+    {
+        // TODO: Implement create() method.
+    }
+
+    public function updateModel(): void
+    {
+        // TODO: Implement update() method.
+    }
+
+    public function delete(): void
+    {
+        // TODO: Implement delete() method.
     }
 }

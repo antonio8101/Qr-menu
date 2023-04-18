@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
     use HasFactory;
 
-    const ID = 'product_id';
+    const ID = 'id';
     const NAME = 'name_dish';
     const DESCRIPTION = 'description';
     const FEATURED = 'featured';
@@ -29,10 +30,10 @@ class Product extends Model
         Product::DESCRIPTION,
     ];
 
-    protected $visible = [
+    /*protected $visible = [
       Product::NAME,
       Product::DESCRIPTION
-    ];
+    ];*/
 
     protected $hidden = [
         Product::FEATURED,
@@ -42,7 +43,8 @@ class Product extends Model
         Product::DELETED_AT
     ];
 
-   public function section(){
-       return $this->belongsToMany(Section::class,'product_section','section_id', 'section_id');
+   public function section(): BelongsToMany
+   {
+       return $this->belongsToMany(Section::class);
    }
 }

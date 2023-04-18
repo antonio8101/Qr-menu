@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('menu', function (Blueprint $table){
-            $table->id('menu_id');
+            $table->id()->unique();
             $table->string('name_menu');
             $table->integer('order');
             $table->boolean('visible');
@@ -24,11 +24,11 @@ return new class extends Migration
         });
 
         Schema::table('menu', function (Blueprint $table){
-            $table->string('user_id');
+            $table->uuid('user_id');
             $table->foreign('user_id','user_fk')->references('id')->on('users');
         });
         Schema::create('sections', function (Blueprint $table){
-            $table->id('section_id')->unique();
+            $table->id()->unique();
             $table->string('name_section');
             $table->integer('order');
             $table->boolean('visible');
@@ -38,11 +38,11 @@ return new class extends Migration
         });
         Schema::table('sections', function (Blueprint $table){
             $table->unsignedBigInteger('menu_id');
-            $table->foreign('menu_id', 'menu_fk')->references('menu_id')->on('menu');
+            $table->foreign('menu_id')->references('id')->on('menu');
         });
 
         Schema::create('products', function (Blueprint $table) {
-            $table->id('product_id')->unique();
+            $table->id()->unique();
             $table->string('name_dish');
             $table->string('description');
             $table->string('featured')->nullable();

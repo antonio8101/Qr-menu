@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
 
         $menuId = 1;
         Menu::factory()->create([
-            'menu_id'=> $menuId,
+            'id'=> $menuId,
             'user_id'=> $userUuid,
             'name_menu'=> 'mezzogiorno',
             'order' => 1,
@@ -49,8 +49,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $sectionId = 1;
-        Section::factory(1)->create([
-            'section_id'=> $sectionId,
+        Section::factory()->create([
+            'id'=> $sectionId,
             'menu_id'=> $menuId,
             'name_section'=> 'primi',
             'order'=> 1,
@@ -59,8 +59,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $productId = 1;
-        Product::factory(1)->create([
-            'product_id'=> $productId,
+        Product::factory()->create([
+            'id'=> $productId,
             'name_dish'=> 'pasta al pomodoro',
             'description'=>Str::random(20),
             'created_at'=>now()

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->id()->unique();
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('section_id');
-            $table->foreign('product_id','product_fk')->references('product_id')->on('products');
-            $table->foreign('section_id','section_fk')->references('section_id')->on('sections');
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('section_id')->references('id')->on('sections');
         });
 
 

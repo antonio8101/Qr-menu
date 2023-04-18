@@ -22,5 +22,4 @@ Route::get('/email', function (){
 })->middleware(['auth', 'verified'])
      ->name('email.verification');
 
-Route::get('menu/',[MenuController::class,'index']);
-Route::get('menu/{id}',[MenuController::class,'show']);
+

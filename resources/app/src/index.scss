@@ -1,5 +1,5 @@
 @import "sass/color.scss";
-
+@import "sass/button_menu_animations.scss";
 :root{
 
     /* Navbar */
@@ -16,14 +16,15 @@
     --section-foreground-text-color: $sectionFgColor;
 
     /* Main Transitions */
-    --transition-behavior: all 0.5s ease-out;
+    --transition-behavior: all .5s ease-in-out;
+
 }
 
 
 
 body {
     background-color: var(--main-background);
-    transition: inherit;
+
 }
 
 .section {
@@ -31,7 +32,7 @@ body {
     color: var(--section-foreground-text-color);
 }
 
-.navbar-show {
+.navbar {
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -41,10 +42,16 @@ body {
     font-size: 1.4em;
     width: 100%;
     background-color: $primary;
+
+
+
+
 }
 
 .header {
     background-color: $primary;
+
+
 }
 
 .route-list li {
@@ -62,6 +69,7 @@ ul li {
 ul li a {
     text-decoration: none;
     color: $secondary;
+    transition: color .5s ease-in-out;
 }
 
 ul li a:hover {
@@ -77,4 +85,33 @@ ul li a:focus {
     width: 50%;
     background-color: $secondary;
     color: #afafaf;
+}
+
+.hide {
+
+    visibility: hidden;
+    transition:visibility .5s ease-in-out ;
+
+
+
+}
+.show{
+
+    visibility: visible;
+    transition:visibility 1s ease-in-out .3s ;
+
+
+
+}
+
+
+.menu-button{
+    display:block;
+    border:solid black 2px;
+    border-radius: 2em 2em 2em 2em;
+    margin: .2em;
+    width:40px;
+    background: black;
+    top:0.5em;
+
 }

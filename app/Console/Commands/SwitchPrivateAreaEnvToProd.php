@@ -48,8 +48,8 @@ class SwitchPrivateAreaEnvToProd extends Command {
 
         $subFolder = 'app';
 
-        $host = env( 'app_url' );
-        $port = env('server_port');
+        $host = env( 'APP_URL' );
+        $port = env('SERVER_PORT');
 
         if ($port != 80 &&  $port !== 433){
             $host .= ":$port";

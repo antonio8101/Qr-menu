@@ -34,7 +34,7 @@ class InitCommand extends Command
         Artisan::call( 'key:generate' );
         Artisan::call( 'passport:keys', ['--force' => true] );
 
-        $isCreated = $this->createDatabase( env('db_host'), env('db_username'), env('db_password'), env('db_database') );
+        $isCreated = $this->createDatabase( env('DB_HOST'), env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_DATABASE') );
 
         Artisan::call( 'migrate' );
 

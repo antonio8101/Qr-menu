@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\MenuAPI;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contracts\QrMenuCreateContract;
 use App\Models\Menu;
 use App\Models\Section;
 use App\Models\User;
@@ -17,28 +18,12 @@ class MenuController extends Controller
         return [User::with('menu')->get(),
             Section::with('product')->get()
         ];
-
     }
 
 
-    public function create(Request $request)
+    public function create(Request $request): void
     {
-        $menuData = $request->all([
-            'name',
-            'order',
-            'visible'
-        ]);
-
-        $name = $menuData['name'];
-        $order = $menuData['order'];
-        $visible = $menuData['visible'];
-
-           Menu::factory()->create([
-             'name'=>$name,
-             'order'=>$order,
-             'visible'=>$visible
-        ]);
-         return 'Menu inserito correttamente';
+        Menu::GetInstance()->create($request);
     }
 
     /**

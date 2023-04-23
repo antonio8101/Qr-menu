@@ -20,9 +20,8 @@ class Section extends Model
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
 
-    protected $primaryKey = Section::ID;
-
     protected $table = 'sections';
+    protected $primaryKey = Section::ID;
 
     public $timestamps = false;
 
@@ -30,10 +29,9 @@ class Section extends Model
         Section::NAME
     ];
 
-  /*  protected $visible = [
-      Section::NAME,
-      Section::MENU_ID
-    ];*/
+    protected $visible = [
+        Section::NAME
+    ];
 
     protected $hidden = [
         Section::ORDER,
@@ -41,7 +39,6 @@ class Section extends Model
         Section::CREATED_AT,
         Section::UPDATED_AT,
         Section::DELETED_AT,
-
     ];
 
     public function menu(): BelongsTo

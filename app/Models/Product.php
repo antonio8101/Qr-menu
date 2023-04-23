@@ -19,9 +19,8 @@ class Product extends Model
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
 
-    protected $primaryKey = Product::ID;
-
     protected $table = 'products';
+    protected $primaryKey = Product::ID;
 
     public $timestamps = false;
 
@@ -30,10 +29,10 @@ class Product extends Model
         Product::DESCRIPTION,
     ];
 
-    /*protected $visible = [
+    protected $visible = [
       Product::NAME,
       Product::DESCRIPTION
-    ];*/
+    ];
 
     protected $hidden = [
         Product::FEATURED,

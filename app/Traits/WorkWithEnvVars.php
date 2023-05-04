@@ -24,8 +24,9 @@ trait WorkWithEnvVars {
     function loadPrivateAreaEnvVars(): bool {
 
         try {
-            //$dotenv = Dotenv::createMutable( resource_path('app') );
-            $dotenv = Dotenv::createMutable( 'resources\app' );
+//            $dotenv = Dotenv::createMutable( resource_path('app') );
+//            $paths = resource_path('app');
+            $dotenv = Dotenv::createMutable( ['resources', 'app'] );
 
             $dotenv->load();
 

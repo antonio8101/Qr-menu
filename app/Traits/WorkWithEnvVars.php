@@ -63,11 +63,10 @@ trait WorkWithEnvVars {
 
     private function changeReactPrivateAreaEnv($key, $value): void {
 
-        //$path = resource_path( '/app/.env' );
+        $path1 = resource_path( 'app/.env' );
         $path = base_path( 'resources\app\.env' );
 
-
-        $this->changeEnv( $key, $value, $path );
+        $this->changeEnv( $key, $value, $path1 );
 
     }
 

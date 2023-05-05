@@ -1,0 +1,46 @@
+@import "color.scss";
+@keyframes spinner {
+    0% {
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+.loading div {
+    width: 100px;
+    height: 100px;
+    border: 10px solid $secondary;
+    position: fixed;
+    top: 50%;
+    border-radius: 50%;
+
+
+}
+
+.loading :nth-child(2) {
+
+    border: 10px solid transparent;
+    border-right-color: $primary;
+    animation: spinner 2s ease-in-out infinite 0.8s;
+}
+
+.loading :nth-child(3) {
+    border: 10px solid transparent;
+    border-right-color: $primary;
+    animation: spinner 2s ease-in-out infinite 1s;
+}
+.loading :nth-child(4) {
+    border: 10px solid transparent;
+    border-right-color: $primary;
+    animation: spinner 2s ease-in-out infinite 1.2s;
+}
+.loading :nth-child(5) {
+    border: 10px solid transparent;
+    border-right-color: $primary;
+    animation: spinner 2s ease-in-out infinite 1.4s;
+}

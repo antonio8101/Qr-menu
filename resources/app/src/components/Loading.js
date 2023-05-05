@@ -1,5 +1,13 @@
 import React from "react";
 
 export function Loading() {
-    return <>LOADING EFFECT...</>;
+    return (
+        <div className="loading">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    );
 }

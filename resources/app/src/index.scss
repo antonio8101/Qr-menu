@@ -1,14 +1,14 @@
 @import "sass/color.scss";
 @import "sass/button_menu_animations.scss";
-:root{
-
+@import "sass/spinner.scss";
+:root {
     /* Navbar */
     --navbar-height: 60px;
 
     /* Logo and Menu Button */
     --header-logo-height: var(--navbar-height);
     --menu-button-continaer-size: var(--navbar-height);
-    --menu-button-fontsize: calc(var(--navbar-height)* .7);
+    --menu-button-fontsize: calc(var(--navbar-height) * 0.7);
 
     /* Colors */
     --main-background: $mainBgColor;
@@ -16,15 +16,11 @@
     --section-foreground-text-color: $sectionFgColor;
 
     /* Main Transitions */
-    --transition-behavior: all .5s ease-in-out;
-
+    --transition-behavior: all 0.5s ease-in-out;
 }
-
-
 
 body {
     background-color: var(--main-background);
-
 }
 
 .section {
@@ -42,16 +38,10 @@ body {
     font-size: 1.4em;
     width: 100%;
     background-color: $primary;
-
-
-
-
 }
 
 .header {
     background-color: $primary;
-
-
 }
 
 .route-list li {
@@ -69,7 +59,7 @@ ul li {
 ul li a {
     text-decoration: none;
     color: $secondary;
-    transition: color .5s ease-in-out;
+    transition: color 0.5s ease-in-out;
 }
 
 ul li a:hover {
@@ -88,30 +78,32 @@ ul li a:focus {
 }
 
 .hide {
-
     visibility: hidden;
-    transition:visibility .5s ease-in-out ;
-
-
-
+    transition: visibility 0.5s ease-in-out;
 }
-.show{
-
+.show {
     visibility: visible;
-    transition:visibility 1s ease-in-out .3s ;
-
-
-
+    transition: visibility 1s ease-in-out 0.3s;
 }
 
-
-.menu-button{
-    display:block;
-    border:solid black 2px;
+.menu-button {
+    display: block;
+    border: solid black 2px;
     border-radius: 2em 2em 2em 2em;
-    margin: .2em;
-    width:40px;
+    margin: 0.2em;
+    width: 40px;
     background: black;
-    top:0.5em;
+    top: 0.5em;
+}
+
+.loading {
+    position: fixed;
+    top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height:97vh;
+    background-color: rgb( 1,1,1,0.7);
 
 }

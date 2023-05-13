@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 interface QrMenuCommandContract
 {
-    public function create(Request $request):void;
+    public function createMenu(Request $request): void;
 
-    public function update():void;
+    public function updateMenu(Request $request):void;
 
-    public function delete():void;
+    public function deleteMenu(Request $request):void;
 }

@@ -1,8 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\MenuAPI;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\MenuAPIRequest\SectionCreateCustomRequest;
+use App\Http\Requests\MenuAPIRequest\SectionDeleteCustomRequest;
+use App\Http\Requests\MenuAPIRequest\SectionUpdateCustomRequest;
+use App\Models\Section;
 use Illuminate\Http\Request;
+
 
 class SectionController extends Controller
 {
@@ -21,9 +27,9 @@ class SectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(SectionCreateCustomRequest $request):void
     {
-        //
+        Section::getInstance()->createSection($request);
     }
 
     /**
@@ -66,9 +72,9 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SectionUpdateCustomRequest $request):void
     {
-        //
+        Section::getInstance()->updateSection($request);
     }
 
     /**
@@ -77,8 +83,8 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SectionDeleteCustomRequest $request):void
     {
-        //
+        Section::getInstance()->deleteSection($request);
     }
 }

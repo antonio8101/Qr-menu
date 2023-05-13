@@ -1,7 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\MenuAPI;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\MenuAPIRequest\ProductCreateCustomRequest;
+use App\Http\Requests\MenuAPIRequest\ProductDeleteCustomRequest;
+use App\Http\Requests\MenuAPIRequest\ProductUpdateCustomRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -21,9 +26,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(ProductCreateCustomRequest $request):void
     {
-        //
+        Product::getInstance()->createProduct($request);
     }
 
     /**
@@ -66,9 +71,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductUpdateCustomRequest $request):void
     {
-        //
+        Product::getInstance()->updateProduct($request);
     }
 
     /**
@@ -77,8 +82,8 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ProductDeleteCustomRequest $request):void
     {
-        //
+        Product::getInstance()->deleteProduct($request);
     }
 }

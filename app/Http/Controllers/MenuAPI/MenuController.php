@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\MenuAPI;
 
 use App\Http\Controllers\Controller;
-use App\Models\Contracts\QrMenuCreateContract;
+use App\Http\Requests\MenuAPIRequest\MenuCreateCustomRequest;
+use App\Http\Requests\MenuAPIRequest\MenuDeleteCustomRequest;
+use App\Http\Requests\MenuAPIRequest\MenuUpdateCustomRequest;
 use App\Models\Menu;
 use App\Models\Section;
 use App\Models\User;
@@ -20,10 +22,9 @@ class MenuController extends Controller
         ];
     }
 
-
-    public function create(Request $request): void
+    public function create(MenuCreateCustomRequest $request):void
     {
-        Menu::GetInstance()->create($request);
+        Menu::getInstance()->createMenu($request);
     }
 
     /**
@@ -63,12 +64,12 @@ class MenuController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MenuUpdateCustomRequest $request):void
     {
-        //
+        Menu::getInstance()->updateMenu($request);
     }
 
     /**
@@ -77,8 +78,8 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(MenuDeleteCustomRequest $request):void
     {
-        //
+        Menu::getInstance()->deleteMenu($request);
     }
 }

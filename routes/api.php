@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('menu/',[MenuController::class,'index']);
+Route::middleware('auth:api')->get('menu/',[MenuController::class,'index']);
 
 Route::middleware('auth:api')->post('menu/create',[MenuController::class,'create']);
 
@@ -40,3 +40,5 @@ Route::middleware('auth:api')->post('product/create', [ProductController::class,
 Route::middleware('auth:api')->post('product/update', [ProductController::class, 'update']);
 
 Route::middleware('auth:api')->post('product/delete', [ProductController::class, 'destroy']);
+
+Route::middleware('auth:api')->get('menu/{id}',[MenuController::class,'show']);

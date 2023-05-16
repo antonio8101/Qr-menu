@@ -15,11 +15,9 @@ use Illuminate\Http\Request;
 class MenuController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        return [User::with('menu')->get(),
-            Section::with('product')->get()
-        ];
+        return Menu::getInstance()->getAllMenu($request);
     }
 
     public function create(MenuCreateCustomRequest $request):void
@@ -44,9 +42,9 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-
+        return Menu::getInstance()->getOneMenu($request, $id);
     }
 
     /**

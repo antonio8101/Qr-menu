@@ -24,7 +24,9 @@ trait WorkWithEnvVars {
     function loadPrivateAreaEnvVars(): bool {
 
         try {
-            $dotenv = Dotenv::createMutable( 'resources\app' );
+
+            $dotenv = Dotenv::createMutable( ['resources', 'app'] );
+
             $dotenv->load();
 
             $this->react_app_client_port   = env('PORT', 3000);
@@ -60,7 +62,7 @@ trait WorkWithEnvVars {
 
     private function changeReactPrivateAreaEnv($key, $value): void {
 
-        $path = base_path( 'resources\app\.env' );
+        $path = resource_path( 'app/.env' );
 
         $this->changeEnv( $key, $value, $path );
 

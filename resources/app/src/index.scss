@@ -1,58 +1,109 @@
-@import 'sass/color.scss';
+@import "sass/color.scss";
+@import "sass/button_menu_animations.scss";
+@import "sass/spinner.scss";
+:root {
+    /* Navbar */
+    --navbar-height: 60px;
 
-body{
-    background-color: #fafbfe;
+    /* Logo and Menu Button */
+    --header-logo-height: var(--navbar-height);
+    --menu-button-continaer-size: var(--navbar-height);
+    --menu-button-fontsize: calc(var(--navbar-height) * 0.7);
+
+    /* Colors */
+    --main-background: $mainBgColor;
+    --section-background: $sectionBgColor;
+    --section-foreground-text-color: $sectionFgColor;
+
+    /* Main Transitions */
+    --transition-behavior: all 0.5s ease-in-out;
 }
 
-.section{
-    background-color: #ffffff;
-    color: #494949;
+body {
+    background-color: var(--main-background);
 }
 
-.button-sidebar{
-    margin: auto 20px auto;
-    border: none;
-    background-color: $primary;
+.section {
+    background-color: var(--section-background);
+    color: var(--section-foreground-text-color);
 }
 
-.navbar-show{
+.navbar {
     position: fixed;
     display: flex;
     flex-direction: column;
-    top: 80px;
-    width: 260px;
-    right: 0;
-    background-color: $secondary;
-}
-
-.header{
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    font-size: 1.4em;
+    width: 100%;
     background-color: $primary;
 }
 
-.route-list li{
+.header {
+    background-color: $primary;
+}
+
+.route-list li {
     margin: 10px 5px 10px 5px;
+    padding: 0;
 }
 
-ul li{
-    list-style-type: none;
+ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: circle;
 }
 
-ul li a{
+ul li a {
     text-decoration: none;
-    color: #afafaf;
+    color: $secondary;
+    transition: color 0.5s ease-in-out;
 }
 
-ul li a:hover{
+ul li a:hover {
     color: white;
 }
 
-ul li a:focus{
+ul li a:focus {
     color: white;
 }
 
-.button-logout{
+.button-logout {
     border: none;
     width: 50%;
     background-color: $secondary;
     color: #afafaf;
+}
+
+.hide {
+    visibility: hidden;
+    transition: visibility 0.5s ease-in-out;
+}
+.show {
+    visibility: visible;
+    transition: visibility 1s ease-in-out 0.3s;
+}
+
+.menu-button {
+    display: block;
+    border: solid black 2px;
+    border-radius: 2em 2em 2em 2em;
+    margin: 0.2em;
+    width: 40px;
+    background: black;
+    top: 0.5em;
+}
+
+.loading {
+    position: fixed;
+    top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height:97vh;
+    background-color: rgb(255, 255, 255, 0.7);
+
 }

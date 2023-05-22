@@ -4,6 +4,7 @@ import {useLogin} from "../hooks/useLogin";
 import {useGetQueryParams} from "../hooks/useGetQueryParams";
 import {useNavigate} from "react-router-dom";
 import {APP_SUBFOLDER, LOGIN_URL} from "../consts";
+import {Loading} from "./Loading";
 
 export function EnsureLoggedIn({children}) {
     const [getStoredUser, setStoredUser] = useStoredUser();
@@ -36,7 +37,7 @@ export function EnsureLoggedIn({children}) {
     }, [user, getQueryParams, getStoredUser, setStoredUser, login, navigate]);
 
     if (!user) {
-        return <>redirecting..</>;
+        return <><Loading/></>;
     } else {
         return <>{children}</>;
     }

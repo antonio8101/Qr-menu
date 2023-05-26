@@ -9,6 +9,7 @@ use App\Models\Contracts\QrMenuCommandContract;
 use App\Models\Contracts\QrMenuQueryContract;
 use App\Traits\HasGetInstance;
 use Error;
+use http\Exception\InvalidArgumentException;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -17,6 +18,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
+/**
+ * @method static create( array $array )
+ */
 class Menu extends Model implements QrMenuCommandContract, QrMenuQueryContract
 {
     use HasFactory;
@@ -41,19 +45,6 @@ class Menu extends Model implements QrMenuCommandContract, QrMenuQueryContract
         Menu::NAME,
         Menu::ORDER,
         Menu::VISIBLE,
-    ];
-
-    protected $visible = [
-        Menu::NAME,
-    ];
-
-    protected $hidden = [
-        Menu::ID,
-        Menu::ORDER,
-        Menu::VISIBLE,
-        Menu::CREATED_AT,
-        Menu::UPDATED_AT,
-        Menu::DELETED_AT,
         Menu::USER_ID
     ];
 
@@ -69,26 +60,19 @@ class Menu extends Model implements QrMenuCommandContract, QrMenuQueryContract
 
     public function createMenu(Request $request): void
     {
-        if (!$request instanceof MenuCreateCustomRequest) {
-//            throw new InvalidArgumentException('', 200);
-            throw new Error('Richiesta errata');
-        }
+        if (!$request instanceof MenuCreateCustomRequest)
+            throw new InvalidArgumentException();
 
         $user = $request->user();
 
         $id = $user->getAuthIdentifier();
 
-        $menuData = $request->all([
-            'name_menu',
-        ]);
+        $menuData = $request->all(['name_menu']);
 
-        $name = $menuData['name_menu'];
-
-        DB::table('menu')->insert([
-            'name_menu' => $name,
+        Menu::create([
+            'name_menu' => $menuData['name_menu'],
             'order' => 1,
             'visible' => 1,
-            'created_at' => now(),
             'user_id' => $id
         ]);
     }

@@ -25,7 +25,7 @@ class MenuTest extends TestCase {
 
         Passport::actingAs(
             User::factory()->create(),
-            ['create-servers']
+            // define scope
         );
 
         $createResponse = $this

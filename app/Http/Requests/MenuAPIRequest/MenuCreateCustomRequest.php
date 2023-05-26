@@ -2,11 +2,13 @@
 
 namespace App\Http\Requests\MenuAPIRequest;
 
-
+use App\Traits\AvoidRedirectOnValidationFailed;
 use Illuminate\Foundation\Http\FormRequest;
 
 class MenuCreateCustomRequest extends FormRequest
 {
+    use AvoidRedirectOnValidationFailed;
+
     /**
      * Determine if the user is authorized to make this request.
      *

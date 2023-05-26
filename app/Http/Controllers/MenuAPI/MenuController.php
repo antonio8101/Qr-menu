@@ -13,11 +13,31 @@ use Illuminate\Http\Response;
 
 class MenuController extends Controller
 {
-
+    /**
+     * Returns all the menu created
+     *
+     * @param Request $request
+     *
+     * @return mixed
+     */
     public function index(Request $request)
     {
         return Menu::getInstance()->getAllMenu($request);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Request $request
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function show(Request $request, int $id)
+    {
+        return Menu::getInstance()->getOneMenu($request, $id);
+    }
+
 
     /**
      * Create a new resource in storage.
@@ -34,22 +54,11 @@ class MenuController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show(Request $request, $id)
-    {
-        return Menu::getInstance()->getOneMenu($request, $id);
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
+     * @param  MenuUpdateCustomRequest  $request
      *
-     * @return Response
+     * void
      */
     public function update(MenuUpdateCustomRequest $request):void
     {
@@ -59,8 +68,7 @@ class MenuController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param  MenuDeleteCustomRequest  $request
      */
     public function destroy(MenuDeleteCustomRequest $request):void
     {

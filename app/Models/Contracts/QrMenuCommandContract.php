@@ -4,6 +4,10 @@ namespace App\Models\Contracts;
 
 use Illuminate\Http\Request;
 
+interface QrMenuQueryContract{
+
+}
+
 interface QrMenuCommandContract
 {
     public function createMenu(Request $request): void;

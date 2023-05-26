@@ -7,9 +7,8 @@ use App\Http\Requests\MenuAPIRequest\MenuCreateCustomRequest;
 use App\Http\Requests\MenuAPIRequest\MenuDeleteCustomRequest;
 use App\Http\Requests\MenuAPIRequest\MenuUpdateCustomRequest;
 use App\Models\Menu;
-use App\Models\Section;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 
 class MenuController extends Controller
@@ -20,27 +19,25 @@ class MenuController extends Controller
         return Menu::getInstance()->getAllMenu($request);
     }
 
-    public function create(MenuCreateCustomRequest $request):void
+    /**
+     * Create a new resource in storage.
+     *
+     * @param MenuCreateCustomRequest $request
+     *
+     * @return Response
+     */
+    public function create(MenuCreateCustomRequest $request): Response
     {
         Menu::getInstance()->createMenu($request);
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return \response(null, 204);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Request $request, $id)
     {
@@ -48,22 +45,11 @@ class MenuController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(MenuUpdateCustomRequest $request):void
     {
@@ -74,7 +60,7 @@ class MenuController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(MenuDeleteCustomRequest $request):void
     {

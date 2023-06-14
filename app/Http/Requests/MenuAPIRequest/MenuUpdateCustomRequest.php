@@ -24,7 +24,6 @@ class MenuUpdateCustomRequest extends  FormRequest
     public function rules()
     {
         return [
-            'id' => 'required',
             'name_menu'=> 'required'
         ];
     }

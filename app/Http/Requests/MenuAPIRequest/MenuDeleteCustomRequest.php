@@ -24,7 +24,7 @@ class MenuDeleteCustomRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required'
+
         ];
     }
 }

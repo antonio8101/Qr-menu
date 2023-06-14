@@ -6,6 +6,7 @@ use App\Http\Requests\MenuAPIRequest\SectionCreateCustomRequest;
 use App\Http\Requests\MenuAPIRequest\SectionDeleteCustomRequest;
 use App\Http\Requests\MenuAPIRequest\SectionUpdateCustomRequest;
 use App\Models\Contracts\QrSectionCommandContract;
+use App\Models\Contracts\QrSectionQueryContract;
 use Error;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Traits\HasGetInstance;
 
-class Section extends Model implements QrSectionCommandContract
+class Section extends Model implements QrSectionCommandContract, QrSectionQueryContract
 {
     use HasFactory;
     use HasGetInstance;
@@ -60,7 +61,7 @@ class Section extends Model implements QrSectionCommandContract
         return $this->belongsToMany(Product::class);
     }
 
-    public function createSection(Request $request): void
+    public function createSection(Request $request, $menu_id): void
     {
         if(!$request instanceof SectionCreateCustomRequest){
 //            throw new InvalidArgumentException('', 200);
@@ -68,11 +69,8 @@ class Section extends Model implements QrSectionCommandContract
         }
 
         $sectionData = $request->all([
-            'menu_id',
             'name_section'
         ]);
-
-        $menu_id = $sectionData['menu_id'];
 
         $name_section = $sectionData['name_section'];
 
@@ -85,7 +83,7 @@ class Section extends Model implements QrSectionCommandContract
         ]);
     }
 
-    public function updateSection(Request $request): void
+    public function updateSection(Request $request, $menu_id, $section_id): void
     {
         if(!$request instanceof SectionUpdateCustomRequest){
 //            throw new InvalidArgumentException('', 200);
@@ -93,33 +91,45 @@ class Section extends Model implements QrSectionCommandContract
         }
 
         $sectionData = $request->all([
-            'id',
             'name_section'
         ]);
 
-        $id = $sectionData['id'];
-
         $name_section = $sectionData['name_section'];
 
-        DB::table('sections')->where('id', '=', $id)->update([
-            'name_section' => $name_section
-        ]);
+        DB::table('sections')
+            ->where('id', '=', $section_id)
+            ->where('menu_id', '=', $menu_id)
+            ->update(
+            [
+                'name_section' => $name_section
+            ]);
     }
 
-    public function deleteSection(Request $request): void
+    public function deleteSection(Request $request, $menu_id, $section_id): void
     {
         if(!$request instanceof SectionDeleteCustomRequest){
 //            throw new InvalidArgumentException('', 200);
             throw new Error('Richiesta errata');
         }
 
+        DB::table('sections')
+            ->where('id', '=', $section_id)
+            ->where('menu_id', '=', $menu_id)
+            ->delete();
+    }
 
-        $sectionData = $request->all([
-            'id'
-        ]);
+    public function getOneSection(Request $request, $menu_id, $section_id):mixed
+    {
+        return Section::where('menu_id', '=',$menu_id)->where('id', '=',$section_id)->get();
+    }
 
-        $id = $sectionData['id'];
+    public function getAllSection(Request $request, $menu_id): mixed
+    {
+        return Section::with('menu')->where('menu_id', '=', $menu_id)->get();
+    }
 
-        DB::table('sections')->where('id', '=', $id)->delete($id);
+    public function searchSection()
+    {
+        // TODO: Implement searchSection() method.
     }
 }

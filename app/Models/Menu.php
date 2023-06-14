@@ -76,7 +76,7 @@ class Menu extends Model implements QrMenuCommandContract, QrMenuQueryContract
 
         $user = $request->user();
 
-        $id = $user->getAuthIdentifier();
+        $user_id = $user->getAuthIdentifier();
 
         $menuData = $request->all([
             'name_menu',
@@ -89,11 +89,11 @@ class Menu extends Model implements QrMenuCommandContract, QrMenuQueryContract
             'order' => 1,
             'visible' => 1,
             'created_at' => now(),
-            'user_id' => $id
+            'user_id' => $user_id
         ]);
     }
 
-    public function updateMenu(Request $request): void
+    public function updateMenu(Request $request, $menu_id): void
     {
         if(!$request instanceof MenuUpdateCustomRequest){
 //            throw new InvalidArgumentException('', 200);
@@ -101,35 +101,39 @@ class Menu extends Model implements QrMenuCommandContract, QrMenuQueryContract
         }
 
         $menuData = $request->all([
-           'id',
-           'name_menu'
+           'name_menu',
         ]);
-
-        $id = $menuData['id'];
 
         $newNameMenu = $menuData['name_menu'];
 
-        DB::table('menu')->where('id', '=', $id)->update(
+        DB::table('menu')
+            ->where('id', '=', $menu_id)
+            ->update(
             [
                 'name_menu' => $newNameMenu,
                 'updated_at'=> now()
             ]);
     }
 
-    public function deleteMenu(Request $request): void
+    public function deleteMenu(Request $request, $menu_id): void
     {
         if(!$request instanceof MenuDeleteCustomRequest){
 //            throw new InvalidArgumentException('', 200);
             throw new Error('Richiesta errata');
         }
 
-        $menuData = $request->all([
-            'id'
-        ]);
+        DB::table('menu')->where('id', '=', $menu_id)->delete($menu_id);
 
-        $id = $menuData['id'];
+    }
 
-        DB::table('menu')->where('id', '=', $id)->delete($id);
+    public function getOneMenu(Request $request, $id)
+    {
+        return Menu::findOrFail($id);
+    }
+
+    public function getAllMenu(Request $request)
+    {
+        return Menu::all();
     }
 
     public function validate()
@@ -140,22 +144,5 @@ class Menu extends Model implements QrMenuCommandContract, QrMenuQueryContract
     public function searchMenu()
     {
         // TODO: Implement searchMenu() method.
-    }
-
-    public function getOneMenu(Request $request, $id)
-    {
-        $user = $request->user();
-        $idUser = $user->getAuthIdentifier();
-
-        return Menu::where('user_id','=',$idUser)->where('id', '=',$id)->get();
-    }
-
-    public function getAllMenu(Request $request)
-    {
-        $user = $request->user();
-
-        $id = $user->getAuthIdentifier();
-
-        return Menu::where('user_id','=',$id)->get();
     }
 }

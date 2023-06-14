@@ -17,9 +17,9 @@ class SectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, $menu_id):mixed
     {
-        //
+        return Section::getInstance()->getAllSection($request, $menu_id);
     }
 
     /**
@@ -27,9 +27,9 @@ class SectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(SectionCreateCustomRequest $request):void
+    public function create(SectionCreateCustomRequest $request, $menu_id):void
     {
-        Section::getInstance()->createSection($request);
+        Section::getInstance()->createSection($request, $menu_id);
     }
 
     /**
@@ -49,9 +49,9 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $menu_id, $section_id):mixed
     {
-        //
+        return Section::getInstance()->getOneSection($request, $menu_id, $section_id);
     }
 
     /**
@@ -72,9 +72,9 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SectionUpdateCustomRequest $request):void
+    public function update(SectionUpdateCustomRequest $request, $menu_id, $section_id):void
     {
-        Section::getInstance()->updateSection($request);
+        Section::getInstance()->updateSection($request, $menu_id, $section_id);
     }
 
     /**
@@ -83,8 +83,8 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SectionDeleteCustomRequest $request):void
+    public function destroy(SectionDeleteCustomRequest $request, $menu_id, $section_id):void
     {
-        Section::getInstance()->deleteSection($request);
+        Section::getInstance()->deleteSection($request, $menu_id, $section_id);
     }
 }

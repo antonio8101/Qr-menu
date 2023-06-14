@@ -42,9 +42,9 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, $menu_id)
     {
-        return Menu::getInstance()->getOneMenu($request, $id);
+        return Menu::getInstance()->getOneMenu($request, $menu_id);
     }
 
     /**
@@ -65,9 +65,9 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(MenuUpdateCustomRequest $request):void
+    public function update(MenuUpdateCustomRequest $request, $menu_id):void
     {
-        Menu::getInstance()->updateMenu($request);
+        Menu::getInstance()->updateMenu($request, $menu_id);
     }
 
     /**
@@ -76,8 +76,8 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MenuDeleteCustomRequest $request):void
+    public function destroy(MenuDeleteCustomRequest $request, $menu_id):void
     {
-        Menu::getInstance()->deleteMenu($request);
+        Menu::getInstance()->deleteMenu($request, $menu_id);
     }
 }

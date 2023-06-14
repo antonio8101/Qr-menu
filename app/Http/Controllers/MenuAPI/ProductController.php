@@ -26,9 +26,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(ProductCreateCustomRequest $request):void
+    public function create(ProductCreateCustomRequest $request, $menu_id, $section_id):void
     {
-        Product::getInstance()->createProduct($request);
+        Product::getInstance()->createProduct($request, $menu_id, $section_id);
     }
 
     /**
@@ -71,9 +71,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductUpdateCustomRequest $request):void
+    public function update(ProductUpdateCustomRequest $request, $menu_id, $section_id, $product_id):void
     {
-        Product::getInstance()->updateProduct($request);
+        Product::getInstance()->updateProduct($request, $menu_id, $section_id, $product_id);
     }
 
     /**
@@ -82,8 +82,8 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductDeleteCustomRequest $request):void
+    public function destroy(ProductDeleteCustomRequest $request, $menu_id, $section_id, $product_id):void
     {
-        Product::getInstance()->deleteProduct($request);
+        Product::getInstance()->deleteProduct($request, $menu_id, $section_id, $product_id);
     }
 }

@@ -54,43 +54,42 @@ class Product extends Model implements QrProductCommandContract
        return $this->belongsToMany(Section::class);
    }
 
-    public function createProduct(Request $request): void
+    public function createProduct(Request $request, $menu_id, $section_id): void
     {
         if(!$request instanceof ProductCreateCustomRequest){
 //            throw new InvalidArgumentException('', 200);
             throw new Error('Richiesta errata');
         }
 
-
-
         $productData = $request->all([
-            'section_id',
+//            'section_id',
             'name_dish'
         ]);
 
-        $section_id = $productData['section_id'];
+//        $section_id = $productData['section_id'];
 
         $name_product = $productData['name_dish'];
 
-        DB::table('product_section')->insert([
-           'section_id' => $section_id,
-           'product_id' => $this->id
-        ]);
+//        DB::table('product_section')->insert([
+//           'section_id' => $section_id,
+//           'product_id' =>
+//        ]);
 
         DB::table('products')->insert([
             'name_dish' => $name_product,
             'created_at'=> now(),
             'description' => 'descrizione piatto'
-
         ]);
+
+//        $section->product()->attach($request->product);
     }
 
-    public function updateProduct(Request $request): void
+    public function updateProduct(Request $request, $menu_id, $section_id, $product_id): void
     {
 
     }
 
-    public function deleteProduct(Request $request): void
+    public function deleteProduct(Request $request, $menu_id, $section_id, $product_id): void
     {
 
     }

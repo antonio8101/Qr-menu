@@ -9,7 +9,6 @@ use App\Models\Contracts\QrMenuCommandContract;
 use App\Models\Contracts\QrMenuQueryContract;
 use App\Traits\HasGetInstance;
 use Error;
-use http\Exception\InvalidArgumentException;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,9 +17,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-/**
- * @method static create( array $array )
- */
 class Menu extends Model implements QrMenuCommandContract, QrMenuQueryContract
 {
     use HasFactory;
@@ -45,6 +41,19 @@ class Menu extends Model implements QrMenuCommandContract, QrMenuQueryContract
         Menu::NAME,
         Menu::ORDER,
         Menu::VISIBLE,
+    ];
+
+    protected $visible = [
+        Menu::NAME,
+    ];
+
+    protected $hidden = [
+        Menu::ID,
+        Menu::ORDER,
+        Menu::VISIBLE,
+        Menu::CREATED_AT,
+        Menu::UPDATED_AT,
+        Menu::DELETED_AT,
         Menu::USER_ID
     ];
 
@@ -60,24 +69,31 @@ class Menu extends Model implements QrMenuCommandContract, QrMenuQueryContract
 
     public function createMenu(Request $request): void
     {
-        if (!$request instanceof MenuCreateCustomRequest)
-            throw new InvalidArgumentException();
+        if (!$request instanceof MenuCreateCustomRequest) {
+//            throw new InvalidArgumentException('', 200);
+            throw new Error('Richiesta errata');
+        }
 
         $user = $request->user();
 
-        $id = $user->getAuthIdentifier();
+        $user_id = $user->getAuthIdentifier();
 
-        $menuData = $request->all(['name_menu']);
+        $menuData = $request->all([
+            'name_menu',
+        ]);
 
-        Menu::create([
-            'name_menu' => $menuData['name_menu'],
+        $name = $menuData['name_menu'];
+
+        DB::table('menu')->insert([
+            'name_menu' => $name,
             'order' => 1,
             'visible' => 1,
-            'user_id' => $id
+            'created_at' => now(),
+            'user_id' => $user_id
         ]);
     }
 
-    public function updateMenu(Request $request): void
+    public function updateMenu(Request $request, $menu_id): void
     {
         if(!$request instanceof MenuUpdateCustomRequest){
 //            throw new InvalidArgumentException('', 200);
@@ -85,35 +101,39 @@ class Menu extends Model implements QrMenuCommandContract, QrMenuQueryContract
         }
 
         $menuData = $request->all([
-           'id',
-           'name_menu'
+           'name_menu',
         ]);
-
-        $id = $menuData['id'];
 
         $newNameMenu = $menuData['name_menu'];
 
-        DB::table('menu')->where('id', '=', $id)->update(
+        DB::table('menu')
+            ->where('id', '=', $menu_id)
+            ->update(
             [
                 'name_menu' => $newNameMenu,
                 'updated_at'=> now()
             ]);
     }
 
-    public function deleteMenu(Request $request): void
+    public function deleteMenu(Request $request, $menu_id): void
     {
         if(!$request instanceof MenuDeleteCustomRequest){
 //            throw new InvalidArgumentException('', 200);
             throw new Error('Richiesta errata');
         }
 
-        $menuData = $request->all([
-            'id'
-        ]);
+        DB::table('menu')->where('id', '=', $menu_id)->delete($menu_id);
 
-        $id = $menuData['id'];
+    }
 
-        DB::table('menu')->where('id', '=', $id)->delete($id);
+    public function getOneMenu(Request $request, $id)
+    {
+        return Menu::findOrFail($id);
+    }
+
+    public function getAllMenu(Request $request)
+    {
+        return Menu::all();
     }
 
     public function validate()
@@ -124,22 +144,5 @@ class Menu extends Model implements QrMenuCommandContract, QrMenuQueryContract
     public function searchMenu()
     {
         // TODO: Implement searchMenu() method.
-    }
-
-    public function getOneMenu(Request $request, $id)
-    {
-        $user = $request->user();
-        $idUser = $user->getAuthIdentifier();
-
-        return Menu::where('user_id','=',$idUser)->where('id', '=',$id)->get();
-    }
-
-    public function getAllMenu(Request $request)
-    {
-        $user = $request->user();
-
-        $id = $user->getAuthIdentifier();
-
-        return Menu::where('user_id','=',$id)->get();
     }
 }

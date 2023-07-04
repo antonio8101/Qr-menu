@@ -24,7 +24,6 @@ class SectionCreateCustomRequest extends FormRequest
     public function rules()
     {
         return [
-            'menu_id' => 'required',
             'name_section'=> 'required'
         ];
     }

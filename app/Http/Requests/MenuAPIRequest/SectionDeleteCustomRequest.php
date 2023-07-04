@@ -24,7 +24,7 @@ class SectionDeleteCustomRequest extends FormRequest
     public function rules()
     {
         return [
-            'id'
+
         ];
     }
 }

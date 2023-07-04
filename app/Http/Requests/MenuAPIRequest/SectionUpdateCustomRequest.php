@@ -24,7 +24,6 @@ class SectionUpdateCustomRequest extends FormRequest
     public function rules()
     {
         return [
-            'id',
             'name_section'
         ];
     }

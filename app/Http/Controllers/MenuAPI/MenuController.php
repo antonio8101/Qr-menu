@@ -13,65 +13,70 @@ use Illuminate\Http\Response;
 
 class MenuController extends Controller
 {
-    /**
-     * Returns all the menu created
-     *
-     * @param Request $request
-     *
-     * @return mixed
-     */
+
     public function index(Request $request)
     {
         return Menu::getInstance()->getAllMenu($request);
     }
 
+    public function create(MenuCreateCustomRequest $request):void
+    {
+        Menu::getInstance()->createMenu($request);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
     /**
      * Display the specified resource.
      *
-     * @param Request $request
-     * @param int $id
-     *
+     * @param  int  $id
      * @return Response
      */
-    public function show(Request $request, int $id)
+    public function show(Request $request, $menu_id)
     {
-        return Menu::getInstance()->getOneMenu($request, $id);
+        return Menu::getInstance()->getOneMenu($request, $menu_id);
     }
 
-
     /**
-     * Create a new resource in storage.
+     * Show the form for editing the specified resource.
      *
-     * @param MenuCreateCustomRequest $request
-     *
+     * @param  int  $id
      * @return Response
      */
-    public function create(MenuCreateCustomRequest $request): Response
+    public function edit($id)
     {
-        Menu::getInstance()->createMenu($request);
-
-        return \response(null, 204);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  MenuUpdateCustomRequest  $request
+     * @param Request $request
      *
-     * void
+     * @return Response
      */
-    public function update(MenuUpdateCustomRequest $request):void
+    public function update(MenuUpdateCustomRequest $request, $menu_id):void
     {
-        Menu::getInstance()->updateMenu($request);
+        Menu::getInstance()->updateMenu($request, $menu_id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  MenuDeleteCustomRequest  $request
+     * @param  int  $id
+     * @return Response
      */
-    public function destroy(MenuDeleteCustomRequest $request):void
+    public function destroy(MenuDeleteCustomRequest $request, $menu_id):void
     {
-        Menu::getInstance()->deleteMenu($request);
+        Menu::getInstance()->deleteMenu($request, $menu_id);
     }
 }

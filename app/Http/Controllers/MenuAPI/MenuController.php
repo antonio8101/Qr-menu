@@ -7,6 +7,7 @@ use App\Http\Requests\MenuAPIRequest\MenuCreateCustomRequest;
 use App\Http\Requests\MenuAPIRequest\MenuDeleteCustomRequest;
 use App\Http\Requests\MenuAPIRequest\MenuUpdateCustomRequest;
 use App\Models\Menu;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -19,9 +20,11 @@ class MenuController extends Controller
         return Menu::getInstance()->getAllMenu($request);
     }
 
-    public function create(MenuCreateCustomRequest $request):void
+    public function create(MenuCreateCustomRequest $request): Response
     {
         Menu::getInstance()->createMenu($request);
+
+        return \response(null,204);
     }
 
     /**

@@ -4,6 +4,9 @@ namespace App\Traits;
 
 use Dotenv\Dotenv;
 use Dotenv\Exception\InvalidPathException;
+use Dotenv\Store\File\Paths;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 trait WorkWithEnvVars {
 
@@ -25,7 +28,10 @@ trait WorkWithEnvVars {
 
         try {
 
-            $dotenv = Dotenv::createMutable( ['resources', 'app'] );
+            $path = Str::remove('app\Traits', __DIR__, false);
+            $path .=  DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR;
+
+            $dotenv = Dotenv::createMutable( $path );
 
             $dotenv->load();
 
@@ -38,7 +44,11 @@ trait WorkWithEnvVars {
             $this->react_app_callback      = $this->react_app_client_host;
 
             return true;
-        } catch (InvalidPathException){
+
+        } catch (InvalidPathException $e){
+
+            Log::error($e->getMessage());
+
             return false;
         }
     }

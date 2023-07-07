@@ -2,11 +2,21 @@
 
 namespace App\Console;
 
+use App\Traits\WorkWithEnvVars;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+   use WorkWithEnvVars;
+
+   public function bootstrap()
+   {
+       parent::bootstrap();
+
+       $this->loadPrivateAreaEnvVars();
+   }
+
     /**
      * Define the application's command schedule.
      *

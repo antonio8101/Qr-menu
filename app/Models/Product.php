@@ -3,7 +3,10 @@
 namespace App\Models;
 
 use App\Http\Requests\MenuAPIRequest\ProductCreateCustomRequest;
+use App\Http\Requests\MenuAPIRequest\ProductDeleteCustomRequest;
+use App\Http\Requests\MenuAPIRequest\ProductUpdateCustomRequest;
 use App\Models\Contracts\QrProductCommandContract;
+use App\Models\Contracts\QrProductQueryContract;
 use Error;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +15,7 @@ use Illuminate\Http\Request;
 use App\Traits\HasGetInstance;
 use Illuminate\Support\Facades\DB;
 
-class Product extends Model implements QrProductCommandContract
+class Product extends Model implements QrProductCommandContract, QrProductQueryContract
 {
     use HasFactory;
     use HasGetInstance;
@@ -49,7 +52,7 @@ class Product extends Model implements QrProductCommandContract
         Product::DELETED_AT
     ];
 
-   public function section(): BelongsToMany
+   public function sections(): BelongsToMany
    {
        return $this->belongsToMany(Section::class);
    }
@@ -61,36 +64,69 @@ class Product extends Model implements QrProductCommandContract
             throw new Error('Richiesta errata');
         }
 
-        $productData = $request->all([
-//            'section_id',
-            'name_dish'
+        $sectionData = $request->all([
+            'name_dish',
+            'description'
         ]);
 
-//        $section_id = $productData['section_id'];
-
-        $name_product = $productData['name_dish'];
-
-//        DB::table('product_section')->insert([
-//           'section_id' => $section_id,
-//           'product_id' =>
-//        ]);
+        $name_product = $sectionData['name_dish'];
+        $description = $sectionData['description'];
 
         DB::table('products')->insert([
             'name_dish' => $name_product,
+            'description' => $description,
             'created_at'=> now(),
-            'description' => 'descrizione piatto'
         ]);
-
-//        $section->product()->attach($request->product);
     }
 
     public function updateProduct(Request $request, $menu_id, $section_id, $product_id): void
     {
+        if(!$request instanceof ProductUpdateCustomRequest){
+//            throw new InvalidArgumentException('', 200);
+            throw new Error('Richiesta errata');
+        }
 
+        $productData = $request->all([
+            'name_dish',
+            'description'
+        ]);
+
+        $nameDish = $productData['name_dish'];
+        $description = $productData['description'];
+
+        DB::table('products')
+            ->where('id', '=', $product_id)
+            ->update(
+                [
+                    'name_dish' => $nameDish,
+                    'description' => $description
+                ]);
     }
 
     public function deleteProduct(Request $request, $menu_id, $section_id, $product_id): void
     {
+        if(!$request instanceof ProductDeleteCustomRequest){
+//            throw new InvalidArgumentException('', 200);
+            throw new Error('Richiesta errata');
+        }
 
+        DB::table('products')
+            ->where('id', '=', $product_id)
+            ->delete();
+    }
+
+    public function getOneProduct(Request $request, $menu_id, $section_id, $product_id):mixed
+    {
+        return Product::with('section')->where('id', '=',$product_id)->get();
+    }
+
+    public function getAllProduct(Request $request, $menu_id, $section_id): mixed
+    {
+        return Section::with('product')->where('id', '=', $section_id)->get();
+    }
+
+    public function searchProduct()
+    {
+        //TODO: Implement searchProduct() method.
     }
 }

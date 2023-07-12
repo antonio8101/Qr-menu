@@ -143,6 +143,6 @@ class Menu extends Model implements QrMenuCommandContract, QrMenuQueryContract
 
     public function searchMenu()
     {
-        // TODO: Implement searchMenu() method.
+        //TODO: Implement searchMenu() method.
     }
 }

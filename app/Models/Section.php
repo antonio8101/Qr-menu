@@ -57,7 +57,8 @@ class Section extends Model implements QrSectionCommandContract, QrSectionQueryC
         return $this->belongsTo(Menu::class);
     }
 
-    public function product(){
+    public function products(): BelongsToMany
+    {
         return $this->belongsToMany(Product::class);
     }
 
@@ -128,8 +129,16 @@ class Section extends Model implements QrSectionCommandContract, QrSectionQueryC
         return Section::with('menu')->where('menu_id', '=', $menu_id)->get();
     }
 
+    public function addProducts(Request $request, Section $section, $menu_id, $section_id): string
+    {
+//        dd($section_id);
+        $section->products()->attach($request->products);
+
+        return 'Attached';
+    }
+
     public function searchSection()
     {
-        // TODO: Implement searchSection() method.
+        //TODO: Implement searchSection() method.
     }
 }

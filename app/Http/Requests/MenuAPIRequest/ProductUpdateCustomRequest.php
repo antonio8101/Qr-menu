@@ -24,7 +24,8 @@ class ProductUpdateCustomRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_dish'=> 'required'
+            'name_dish'=> 'required',
+            'description' => 'required'
         ];
     }
 }

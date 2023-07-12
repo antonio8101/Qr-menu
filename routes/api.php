@@ -42,6 +42,8 @@ Route::middleware('auth:api')->put('menu/{menu_id}/section/update/{section_id}',
 
 Route::middleware('auth:api')->delete('menu/{menu_id}/section/delete/{section_id}', [SectionController::class, 'destroy']);
 
+Route::middleware('auth:api')->post('menu/{menu_id}/section/edit/{section_id}', [SectionController::class, 'edit']);
+
 Route::middleware('auth:api')->get('menu/{menu_id}/section/{section_id}/products', [ProductController::class, 'index']);
 
 Route::middleware('auth:api')->get('menu/{menu_id}/section/{section_id}/product/{product_id}', [ProductController::class, 'show']);

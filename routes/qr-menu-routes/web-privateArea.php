@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MenuAPI\MenuController;
 use Illuminate\Support\Facades\Route;
 
 $reactAppUri = ['profile','callback'];
@@ -20,3 +21,5 @@ Route::get('/email', function (){
     return 'email-verified';
 })->middleware(['auth', 'verified'])
      ->name('email.verification');
+
+

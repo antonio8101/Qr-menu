@@ -7,6 +7,7 @@ use App\Http\Requests\MenuAPIRequest\ProductCreateCustomRequest;
 use App\Http\Requests\MenuAPIRequest\ProductDeleteCustomRequest;
 use App\Http\Requests\MenuAPIRequest\ProductUpdateCustomRequest;
 use App\Models\Product;
+use App\Models\Section;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -16,9 +17,20 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, $menu_id, $section_id)
     {
-        //
+        return Product::getInstance()->getAllProduct($request, $menu_id, $section_id);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request, $menu_id, $section_id, $product_id)
+    {
+        return Product::getInstance()->getOneProduct($request, $menu_id, $section_id, $product_id);
     }
 
     /**
@@ -29,39 +41,6 @@ class ProductController extends Controller
     public function create(ProductCreateCustomRequest $request, $menu_id, $section_id):void
     {
         Product::getInstance()->createProduct($request, $menu_id, $section_id);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -85,5 +64,27 @@ class ProductController extends Controller
     public function destroy(ProductDeleteCustomRequest $request, $menu_id, $section_id, $product_id):void
     {
         Product::getInstance()->deleteProduct($request, $menu_id, $section_id, $product_id);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 }

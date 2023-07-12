@@ -20,24 +20,6 @@ class MenuController extends Controller
         return Menu::getInstance()->getAllMenu($request);
     }
 
-    public function create(MenuCreateCustomRequest $request): Response
-    {
-        Menu::getInstance()->createMenu($request);
-
-        return \response(null,204);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
     /**
      * Display the specified resource.
      *
@@ -49,15 +31,11 @@ class MenuController extends Controller
         return Menu::getInstance()->getOneMenu($request, $menu_id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
+    public function create(MenuCreateCustomRequest $request): Response
     {
-        //
+        Menu::getInstance()->createMenu($request);
+
+        return \response(null,204);
     }
 
     /**
@@ -81,5 +59,27 @@ class MenuController extends Controller
     public function destroy(MenuDeleteCustomRequest $request, $menu_id):void
     {
         Menu::getInstance()->deleteMenu($request, $menu_id);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        //
     }
 }

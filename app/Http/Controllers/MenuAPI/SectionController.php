@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MenuAPIRequest\SectionCreateCustomRequest;
 use App\Http\Requests\MenuAPIRequest\SectionDeleteCustomRequest;
 use App\Http\Requests\MenuAPIRequest\SectionUpdateCustomRequest;
+use App\Models\Product;
 use App\Models\Section;
 use Illuminate\Http\Request;
 
@@ -23,27 +24,6 @@ class SectionController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(SectionCreateCustomRequest $request, $menu_id):void
-    {
-        Section::getInstance()->createSection($request, $menu_id);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -55,14 +35,13 @@ class SectionController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for creating a new resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function create(SectionCreateCustomRequest $request, $menu_id):void
     {
-        //
+        Section::getInstance()->createSection($request, $menu_id);
     }
 
     /**
@@ -86,5 +65,27 @@ class SectionController extends Controller
     public function destroy(SectionDeleteCustomRequest $request, $menu_id, $section_id):void
     {
         Section::getInstance()->deleteSection($request, $menu_id, $section_id);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Request $request, Section $section, $menu_id, $section_id): string
+    {
+        return Section::getInstance()->addProducts($request, $section, $menu_id, $section_id);
     }
 }
